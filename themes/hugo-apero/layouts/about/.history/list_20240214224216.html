@@ -1,0 +1,131 @@
+{{ define "main" }}
+{{ $page := . }}
+<style>
+
+  .page-content {
+    width: 100%;
+  }
+.page-header {
+  text-align: justify;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+.column-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 2%;
+}
+
+.about-sidebar {
+  background-color: rgba(255, 255, 255, 0.0);
+  border: 2px solid rgba(180, 180, 180, 0.4);
+  border-radius: 4px;
+}
+.dark-mode .about-sidebar {
+  border: 2px solid rgba(180, 180, 180, 0);
+}
+
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  .column-header {
+    grid-template-columns: auto; /* Change to auto for mobile devices */
+    grid-template-rows: 1fr 1fr; /* Set grid template rows */
+    row-gap: 2%; /* Set row gap */
+  }
+
+  .page-header {
+    width: 100%;
+  }
+
+  .f-subheadline {
+    font-size: 20px;
+  }
+}
+
+
+
+.row-header {
+  display: flex;
+}
+</style>
+<main class="page-main pa4" role="main">
+  <section class="page-content mw8 center">
+    <!--begin header-->
+    <div class="column-header">
+    <!--begin sidebar-->
+    {{ $sidebar := printf "/%s/%s" .Section "sidebar/index.md" }}
+    {{ $sidebar_pg := site.GetPage $sidebar }}
+    {{ with $sidebar_pg }}
+        <sidebar class="about-sidebar" id="profile">
+          <div class="pt3 pb1 pb2-ns tc ph4">
+            {{ if .Params.avatar_shape }}
+              {{- $avatar := ($sidebar_pg.Resources.ByType "image").GetMatch "*avatar*" -}}
+              {{ $avatar_shape := .Params.avatar_shape | default "circle" }}
+              {{ with $avatar }}
+                <img src="{{ .RelPermalink }}" style="width: 80%; height:auto;" class="h4 w4 dib {{if eq $avatar_shape "rounded"}}br3{{end}}{{if eq $avatar_shape "circle"}}br-100{{end}}" alt="avatar">
+              {{ end }}
+            {{ end }}
+            <h2 class="f-subheadline f4-ns fw6">{{ .Params.author }}</h2>
+            <h5 style="text-transform: capitalize;" class="f-subheadline f4 fw2 ttu tracked">{{ .Params.role | markdownify }}</h5>
+            {{ if .Params.show_social_links }}
+              <div class="site-social-links db v-mid pv2">
+              {{ partial "shared/social-links.html" . }}
+              </div>
+            {{ end }}
+            </div>
+
+            {{ if .Params.audio_link_label }}
+            {{ $audio := ($sidebar_pg.Resources).GetMatch "*audio*" }}
+            <div class="pa1 pa2-ns tc ph4">
+                <p class="fw2 pb1">{{ .Params.audio_link_label }}</p>
+                <p>
+                {{ with $audio }}
+                <audio src="{{ .RelPermalink }}" controls></audio>
+                {{ end }}
+                </p>
+            </div>
+            {{ end }}
+
+          <div class="pa1 pa2-ns tc ph4">
+            <h5 class="f-subheadline f4 fw2 ttu tracked">{{ .Params.link_list_label }}</h5>
+            <ul class="list measure center ph4 pb4">
+            {{ range .Params.link_list }}
+              <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-20">
+                <a href="{{ .url }}" target="_blank">{{ .name }}</a>
+              </li>
+            {{ end }}
+            </ul>
+          </div>
+        </sidebar>
+        {{ end }}
+
+    
+    {{ if .Params.show_header }}
+    {{ $header := printf "/%s/%s" .Section "header/index.md" }}
+    {{ with site.GetPage $header }}
+      <header class="page-header bb b--black-10 bw1 pb4 mb5 {{ if .Params.text_align_right }}tr{{ end }}">
+      {{ if .Params.show_title_as_headline }}<h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns db">{{ $page.Title | markdownify }}</h1>
+      {{ else }}<h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns db">{{ .Params.headline | markdownify }}</h1>{{ end }}
+      {{ with .Content}}
+        <div class="pt2 f4 measure-wide lh-copy dib">{{ . | markdownify }}</div>
+      {{ end }}
+      </header>
+      
+      
+    </div>
+    {{ end }}
+    {{ end }}
+
+    <section>
+      <!--make the flexbox a row only on not small screens-->
+     
+        <div>
+          {{ partial "shared/summary-li" . }}
+      </div>    <!--close flex-->
+    </section>  <!--close body section-->
+  </section>    <!--close page content section-->
+</main>
+{{ end }}

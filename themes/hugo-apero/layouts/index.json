@@ -1,0 +1,7 @@
+{{- $pagesIndex := slice -}}
+{{- range $index, $page := .Site.Pages -}}
+  {{- $filteredDescription := $page.Plain }}
+  {{- $pageData := (dict "title" $page.Title "url" $page.Permalink "content" $filteredDescription "date" $page.Date) -}}
+  {{- $pagesIndex = $pagesIndex | append $pageData -}}
+{{- end -}}
+{{- $pagesIndex | jsonify -}}

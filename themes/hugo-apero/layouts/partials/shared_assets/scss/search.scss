@@ -1,0 +1,77 @@
+/* Search button style */
+.search-button {
+  background-color: transparent; /* Replace with your preferred color */
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-button {
+  display: none;
+}
+
+
+/* Search box style */
+.search-box {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #f1f1f1; /* Replace with your preferred color */
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Show search box on button click */
+.search-box.active {
+  display: block;
+}
+
+/* Animation for search button enlargement */
+.search-button.active {
+  width: 200px;
+}
+
+/* Style for search input */
+#search-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc; /* Replace with your preferred color */
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Icon styles */
+.search-button svg {
+  fill: #007bff; /* Replace with your preferred color for the icon */
+  width: 20px;
+  height: 20px;
+}
+
+/* Animation for search button enlargement */
+.search-button.active svg {
+  fill: #fff; /* Replace with your preferred color for the icon when active */
+}
+
+
+/* Style for search results */
+#search-results {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+#search-results li {
+  cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid #ccc; /* Replace with your preferred color */
+}
+
+#search-results li:last-child {
+  border-bottom: none;
+}

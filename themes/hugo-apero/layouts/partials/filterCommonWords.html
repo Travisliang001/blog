@@ -1,0 +1,8 @@
+{{- define "filterCommonWords" -}}
+  {{- $description := . -}}
+  {{- $commonWords := slice "the" "a" "an" "is" "are" "of" "you" -}}
+  {{- range $word := $commonWords -}}
+    {{- $description = replace $description $word "" -}}
+  {{- end -}}
+  {{- return $description -}}
+{{- end -}}

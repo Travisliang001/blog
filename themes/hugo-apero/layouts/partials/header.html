@@ -1,0 +1,370 @@
+{{ $page := . }}
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  {{ partial "mathjax_support.html" . }}
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="{{ .Site.BaseURL }}" title="Home">
+      {{ if .Site.Params.logo }}<img src="{{ .Site.Params.logo | relURL }}" class="dib db-l h2 w-auto" alt="{{ .Site.Title }}">{{ else }}<span class="f4 fw7">{{ .Site.Title }}</span>{{ end }}
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l {{ if $.Site.Params.navallcaps }}ttu tracked{{ end }}">
+      {{ range .Site.Menus.header }}
+        {{ $active := or ($page.IsMenuCurrent "header" .) ($page.HasMenuCurrent "header" .) }}
+        {{ $active = or $active (eq $page.Section (trim .URL "/")) }}
+        {{ $active = or $active (eq $page.RelPermalink .URL ) }}
+        <a class="link f6 f5-l dib pv1 ph2 {{ if $active }}active{{ end }}" href="{{ .URL }}" title="{{ .Title }}">
+          {{ if eq .Name "Search" }}
+            <i class="fas fa-search" aria-hidden="true"></i>
+          {{ else }}
+            {{ .Name }}
+          {{ end }}
+        </a>
+      {{ end }}
+      {{ if .Site.Params.socialInHeader }}
+        <div class="dib v-mid">
+          {{ partial "shared/social-links.html" . }}
+        </div>
+      {{ end }}
+    </div>
+
+    
+    <!--
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix - Search Box Modal</title>
+  <style>
+    /* Base styles for the page */
+
+    .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 999; /* Ensure the search box is above other elements */
+      }
+
+    /* Search button styles */
+    .search-button {
+      background-color: transparent;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-button svg {
+      fill: #007bff;
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Search modal container */
+    .modal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0,0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(20px); /* Add backdrop blur effect */
+      z-index: 9999;
+    }
+
+    /* Search box modal */
+    .search-modal {
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      max-width: 600px; /* Set maximum width for larger screens */
+      max-height: 300px; /* Limit the height to make it scrollable */
+      overflow-y: auto; /* Add vertical scrollbar when content overflows */
+    }
+
+    /* Search input and clear button styles */
+    .search-input-container {
+      position: fixed;
+      top: 20%;
+      right: 25%;
+      width: 50%;
+    }
+
+    #search-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #8a2be2;
+      border-radius: 15px;
+      font-size: 18px;
+      outline: none;
+      margin-bottom: 10px;
+      box-shadow: 0 0 5px #8a2be2; /* Add initial glow effect */
+      transition: box-shadow 0.3s ease; /* Add transition effect for the glow */
+    }
+    
+    /* Glowing effect on focus */
+  #search-input:focus {
+    box-shadow: 0 0 10px #8a2be2; /* Increased glow effect on focus */
+  }
+
+
+    .clear-button {
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .clear-button svg {
+      fill: #007bff;
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Search results styles */
+     .search-results {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-top: 20px;
+    }
+
+    .search-results li {
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Add transition effect on hover */
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    /* Hover effect on search results */
+    .search-results li:hover {
+      background-color: #8a2be2;
+      color: white;
+    }
+
+    /* Search results preview subwindow */
+    .preview-subwindow {
+      position: fixed;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 999;
+    }
+
+    .search-results li:hover .preview-subwindow {
+      display: block;
+    }
+        
+        .search-results-container {
+        background-color: #f9f9f9;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 600px; /* Set maximum width for larger screens */
+      max-height: 300px; /* Limit the height to make it scrollable */
+      overflow-y: auto; /* Add vertical scrollbar when content overflows */
+}
+
+
+  </style>
+</head>
+
+<body>  
+<div class="search-container">
+  <button class="search-button" id="search-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path
+        d="M19.71 18.29l-4.88-4.88a7.5 7.5 0 1 0-1.41 1.41l4.88 4.88a1 1 0 0 0 1.41-1.41zM10.5 16a5.5 5.5 0 1 1 5.5-5.5 5.506 5.506 0 0 1-5.5 5.5z"
+      />
+    </svg>
+  </button>
+</div>
+
+<template id="search-modal-template">
+  <div class="modal-container">
+          <div class="search-input-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button class="clear-button" id="clear-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M18.3 6.3l-1.4-1.4-5.6 5.6-5.6-5.6-1.4 1.4 5.6 5.6-5.6 5.6 1.4 1.4 5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6z" />
+          </svg>
+        </button>
+      </div>
+
+    <div class="search-results-container">
+      <ul id="search-results" class="search-results"></ul>
+    </div>
+    
+  </div>
+</template>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchButton = document.getElementById("search-button");
+    let isSearchActive = false; // Flag to track search button state
+    let previewWindow; // Variable to store the reference to the preview window
+
+    searchButton.addEventListener("click", function () {
+      if (!isSearchActive) {
+        openSearchModal();
+        window.addEventListener("click", outsideClickListener);
+      } else {
+        closeSearchModal();
+        window.removeEventListener("click", outsideClickListener);
+      }
+    });
+
+    function outsideClickListener(event) {
+      const searchInput = document.getElementById("search-input");
+      const searchModal = document.querySelector(".search-modal");
+    }
+
+    function openSearchModal() {
+      const modalContainer = document.importNode(
+        document.getElementById("search-modal-template").content,
+        true
+      );
+
+      document.body.appendChild(modalContainer);
+
+      const searchInput = document.getElementById("search-input");
+      const clearButton = document.getElementById("clear-button");
+      const searchResults = document.getElementById("search-results");
+      const searchResultsContainer = document.querySelector(".search-results-container");
+
+      clearButton.addEventListener("click", function () {
+        if (searchInput.value.trim() === "") {
+          closeSearchModal();
+        }
+        searchInput.value = "";
+        searchInput.focus();
+        showSearchResults([]);
+      });
+
+      searchInput.addEventListener("input", function () {
+        const query = searchInput.value.toLowerCase().trim();
+        const filteredResults = window.pagesIndex.filter((page) =>
+          page.title.toLowerCase().includes(query)
+        );
+        showSearchResults(filteredResults);
+        searchResultsContainer.classList.toggle("show-results", filteredResults.length > 0);
+      });
+
+      searchInput.focus();
+      isSearchActive = true;
+    }
+
+    function closeSearchModal() {
+      const modalContainer = document.querySelector(".modal-container");
+      if (modalContainer) {
+        modalContainer.remove();
+      }
+      isSearchActive = false;
+    }
+
+    fetch("{{ .Site.BaseURL }}index.json")
+      .then((response) => response.json())
+      .then((data) => {
+        window.pagesIndex = data;
+      })
+      .catch((error) => console.error("Error loading index.json:", error));
+
+    function showSearchResults(results) {
+      const searchResults = document.getElementById("search-results");
+      searchResults.innerHTML = "";
+
+      const uniqueSuggestions = new Set();
+
+      results.forEach((result) => {
+        if (!uniqueSuggestions.has(result.title)) {
+          const listItem = document.createElement("li");
+          listItem.textContent = result.title;
+          listItem.addEventListener("click", function () {
+            window.location.href = result.href;
+            closeSearchModal();
+          });
+
+          // Add a mouseenter event listener to show the preview window
+          listItem.addEventListener("mouseenter", function () {
+            showPreview(result.title, result.description);
+          });
+
+          // Add a mouseleave event listener to hide the preview window
+          listItem.addEventListener("mouseleave", hidePreview);
+
+          searchResults.appendChild(listItem);
+          uniqueSuggestions.add(result.title);
+        }
+      });
+            searchResultsContainer.style.display = results.length > 0 ? "block" : "none";
+    }
+
+    function showPreview(title, content) {
+      if (!previewWindow) {
+        // Create the preview window if it doesn't exist
+        previewWindow = document.createElement("div");
+        previewWindow.classList.add("preview-window");
+        document.body.appendChild(previewWindow);
+      }
+
+      // Update the content of the preview window with the search result
+      previewWindow.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+
+      // Position the preview window below the search input
+      const searchInput = document.getElementById("search-input");
+      const searchInputRect = searchInput.getBoundingClientRect();
+      const previewWindowRect = previewWindow.getBoundingClientRect();
+
+      const top = searchInputRect.bottom + 10;
+      const left = searchInputRect.left + searchInputRect.width / 2 - previewWindowRect.width / 2;
+
+      previewWindow.style.top = `${top}px`;
+      previewWindow.style.left = `${left}px`;
+      previewWindow.style.display = "block";
+    }
+
+    function hidePreview() {
+      // Hide the preview window
+      if (previewWindow) {
+        previewWindow.style.display = "none";
+      }
+    }
+  });
+</script>
+
+
+
+
+</body>
+
+</html> -->
+
+      </nav>
+    
+</header>
