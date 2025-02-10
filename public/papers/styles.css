@@ -1,0 +1,104 @@
+body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .publication {
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            transition: transform 0.3s; /* Added transition for the zoom effect */
+        }
+        .publication:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+        h3 {
+            margin-top: 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .publication-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+        .links {
+            display: flex;
+            gap: 10px;
+        }
+      .year-section {
+          margin-top: 10px;
+          border: 1px solid #ddd;
+          padding: 10px;
+          background-color: #f9f9f9;
+          cursor: pointer;
+      }
+      .year-section h2 {
+          margin: 0;
+      }
+      .year-content {
+          margin-top: 10px;
+      }
+      .year-content.show {
+          display: none;
+      }
+      .paper-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .paper-title {
+            flex-basis: 100%;
+            color: blue;
+        }
+        .paper-authors {
+            flex-basis: 100%;
+            color: black;
+        }
+        .paper-conference {
+            flex-basis: 100%;
+            font-style: italic;
+            color: black;
+        }
+        .year-section h2:hover .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .arrow-icon {
+            font-size: 12px;
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        .tooltip {
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: pre-line;
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add ellipsis for content that overflows */
+}

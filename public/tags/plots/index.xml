@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>plots on Home</title>
+    <link>/tags/plots/</link>
+    <description>Recent content in plots on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/plots/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flower</title>
+      <link>/rt/flowers/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/rt/flowers/</guid>
+      <description> Got me so high, and then she dropped me (Maroon five)
+library(tidyverse) x = seq(from=-5, to=5, by = 0.005) %&amp;gt;% expand.grid(x=., y=.) p = x %&amp;gt;% ggplot() + aes(x=(pi*x + sin(x*pi)), y=(y*pi * sin(x*pi)), color = abs(y)) + geom_point(alpha=.01, shape=20, size=0)+ scale_color_distiller(palette = &amp;quot;YlGn&amp;quot;, direction = 1) + theme_void()+ theme(legend.position = &amp;quot;none&amp;quot; ) + coord_polar(); p </description>
+    </item>
+    
+    <item>
+      <title>Flowers</title>
+      <link>/rt/flower2/</link>
+      <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/rt/flower2/</guid>
+      <description> As flores de plástico não morrem (Titas)
+Plastic flowers don’t die.
+library(tidyverse) x = seq(from=-20, to=20, by = 0.01) %&amp;gt;% expand.grid(x=., y=.) p = x %&amp;gt;% ggplot() + aes(x=(pi*x + sin(x*pi)), y=(y*pi * sin(x*pi)), color = y) + geom_point(alpha=.01, shape=20, size=0)+ scale_color_viridis_c(option = &amp;quot;inferno&amp;quot;, direction = 1) + theme_void()+ theme(legend.position = &amp;quot;none&amp;quot; ) + coord_polar(); p </description>
+    </item>
+    
+    <item>
+      <title>Rose</title>
+      <link>/rt/rose/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/rt/rose/</guid>
+      <description>Hold me close and hold me fast, the magic spell you cast, this is la vie en rose…(Edith Piaf)
+Some time ago I started following a couple of tweets on generative art and it was love at first sight… So I decided to start playing with it, and this is my second plot, and the first I really liked the outcome.
+library(tidyverse) x = seq(from=-2, to=2, by = 0.01) %&amp;gt;% expand.</description>
+    </item>
+    
+  </channel>
+</rss>

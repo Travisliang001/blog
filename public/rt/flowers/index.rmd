@@ -1,0 +1,53 @@
+---
+subtitle: "Generative Rt"
+title: "Flower"
+excerpt: "Got me so high, and then she dropped me"
+date: 2021-07-22
+author: "Deisy Morselli Gysi"
+draft: false
+# layout options: single, single-sidebar
+layout: single
+categories:
+- GenerativeArt
+- art
+tags:
+- plots
+- ggplot2
+- rt
+- art
+- artistry
+- rtistry
+
+---
+
+_Got me so high, and then she dropped me_ (Maroon five)
+
+
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+
+x = seq(from=-5, to=5, by = 0.005) %>%
+  expand.grid(x=., y=.) 
+p = x %>%
+  ggplot() +
+  aes(x=(pi*x + sin(x*pi)), 
+      y=(y*pi * sin(x*pi)), 
+      color = abs(y)) + 
+  geom_point(alpha=.01, shape=20, size=0)+
+ scale_color_distiller(palette = "YlGn", 
+ direction = 1) +
+  theme_void()+
+  theme(legend.position = "none" ) +
+  coord_polar(); p
+
+```
+
+
+```{r, echo = FALSE, results = FALSE, fig.keep='none', message=FALSE, warning=FALSE}
+ggsave("featured.png", bg = "transparent")
+p
+dev.off()
+```
+

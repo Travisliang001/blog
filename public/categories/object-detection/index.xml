@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Object Detection on Home</title>
+    <link>/categories/object-detection/</link>
+    <description>Recent content in Object Detection on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/object-detection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AutoAnnotator - MacOS Utility App</title>
+      <link>/projects/autoannotator/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/autoannotator/</guid>
+      <description>Automatic Image Annotator for Computer Vision</description>
+    </item>
+    
+    <item>
+      <title>AutoLabelMe</title>
+      <link>/projects/autolabelme/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/autolabelme/</guid>
+      <description>Open Source Image Annotator in Python</description>
+    </item>
+    
+    <item>
+      <title>Detector-Encoder AutoEncoder</title>
+      <link>/projects/dea/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/dea/</guid>
+      <description>A Novel Autoencoder for anomaly segmentation</description>
+    </item>
+    
+  </channel>
+</rss>

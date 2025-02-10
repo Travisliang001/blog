@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>forests on Home</title>
+    <link>/categories/forests/</link>
+    <description>Recent content in forests on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 11 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/forests/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contrasting protist communities (Cercozoa: Rhizaria) in pristine and earthworm-invaded North American deciduous forests</title>
+      <link>/publications/microbiote/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/microbiote/</guid>
+      <description>Abstract Earthworms are considered ecosystem engineers due to their fundamental impact on soil structure, soil processes and on other soil biota. An invasion of non-native earthworm species has altered soils of North America since European settlement, a process currently expanding into still earthworm-free forest ecosystems due to continuous spread and increasing soil temperatures owing to climate change. Although earthworms are known to modify soil microbial diversity and activity, it is as yet unclear how eukaryote consumers in soil microbial food webs will be affected.</description>
+    </item>
+    
+  </channel>
+</rss>

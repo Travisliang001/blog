@@ -1,0 +1,68 @@
+---
+subtitle: "Generative Rt"
+title: "Rose"
+excerpt: "Hold me close and hold me fast, the magic spell you cast, this is la vie en rose..."
+date: 2021-07-20
+author: "Deisy Morselli Gysi"
+draft: false
+# layout options: single, single-sidebar
+layout: single
+categories:
+- GenerativeArt
+- art
+tags:
+- plots
+- ggplot2
+- rt
+- art
+- artistry
+- rtistry
+
+---
+
+_Hold me close and hold me fast, the magic spell you cast, this is la vie en rose..._(Edith Piaf)
+
+
+Some time ago I started following a couple of tweets on generative art and it was love at first sight... So I decided to start playing with it, and this is my second plot, and the first I really liked the outcome.
+
+
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+
+x = seq(from=-2, to=2, by = 0.01) %>%
+  expand.grid(x=., y=.) 
+p = x %>%
+  ggplot() +
+  aes(x=(x*pi + sin(y^2)*pi*cos(y^2)), 
+      y=(y*pi + cos(x^2)*pi*sin(x^2)), 
+      color = x) + 
+  
+  geom_point(alpha=.05, shape=20, size=0)+
+  
+  geom_point(alpha=.05, shape=20, size=0, 
+             aes(x=(-x*pi - sin(y^2)*pi*cos(y^2)), 
+                 y=(-y*pi - cos(x^2)*pi*sin(x^2))))+
+  
+  
+  geom_point(alpha=.05, shape=20, size=0, 
+             aes(color = y^2, 
+                 y=(x*pi + sin(y^3)*pi*cos(y^3)), 
+                 x=(y*pi + cos(x^3)*pi*sin(x^3))))+
+  
+  
+  scale_color_viridis_c(option = "plasma", direction = 1) +
+  theme_void()+
+  theme(legend.position = "none" ) +
+  coord_polar(); p
+
+```
+
+
+```{r, echo = FALSE, results = FALSE, fig.keep='none', message=FALSE, warning=FALSE}
+ggsave("featured.png", bg = "transparent")
+p
+dev.off()
+```
+

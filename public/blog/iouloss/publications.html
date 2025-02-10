@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.101.0" />
+<title>IoU Losses | Home</title>
+
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="Computer Vision | Deep Learning | Statistics | Mathematics">
+
+
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="IoU Losses | Home">
+<meta property="og:description" content="Computer Vision | Deep Learning | Statistics | Mathematics" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/blog/iouloss/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/blog/iouloss/sidebar-featured.png" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/blog/iouloss/sidebar-featured.png" >
+    
+    
+  <meta itemprop="name" content="IoU Losses">
+<meta itemprop="description" content="Loss Functions for Object Detection"><meta itemprop="datePublished" content="2020-09-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-09-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1694"><meta itemprop="image" content="/blog/iouloss/sidebar-featured.png">
+<meta itemprop="keywords" content="" />
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <link rel="icon" href="" type="image/x-icon">
+  
+    <link rel="canonical" type="text/html" href="/blog/iouloss/" title="Home" />
+  
+  
+  <link rel="stylesheet" href="/style.main.min.4029c246551cf6ec532aa7b82ca95587b549cfad8f761f7746eb6154907463c9.css" integrity="sha256-QCnCRlUc9uxTKqe4LKlVh7VJz62Pdh93RuthVJB0Y8k=" media="screen">
+  
+  
+  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.0c726aeeb42ad4c5f70c2abb6be57c498447ba21d1074821f3255504c16da305.js" type="text/javascript"></script>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+</style>
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+
+  
+  
+  <script src="/toc.min.cbd751154f1d83c5f03e91b54c869201115768e2fe9b1aaad26e0857dd1bcbce.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-sidebar">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <span class="f4 fw7">Home</span>
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About me">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/blog/" title="Blogs">Blogs</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/projects/" title="Projects">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/publications/" title="Publications">Publications</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/cv/" title="CV">CV</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/travel_video/" title="Video">Video</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/contact/" title="Contact form">Contact</a>
+      
+      
+    </div>
+    
+    
+    
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix - Search Box Modal</title>
+  <style>
+     
+
+    .search-container {
+        display: absolute;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 999;  
+      }
+
+     
+    .search-button {
+      background-color: transparent;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-button svg {
+      fill: #007bff;
+      width: 30px;
+      height: 30px;
+    }
+
+     
+    .modal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0,0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(20px);  
+      z-index: 9999;
+    }
+
+     
+    .search-modal {
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      max-width: 600px;  
+      max-height: 300px;  
+      overflow-y: auto;  
+    }
+
+     
+    .search-input-container {
+      position: fixed;
+      top: 20%;
+      right: 25%;
+      width: 50%;
+
+    }
+
+    #search-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #8a2be2;
+      border-radius: 15px;
+      font-size: 18px;
+      outline: none;
+      margin-bottom: 10px;
+      box-shadow: 0 0 5px #8a2be2;  
+      transition: box-shadow 0.3s ease;  
+    }
+    
+     
+  #search-input:focus {
+    box-shadow: 0 0 10px #8a2be2;  
+  }
+
+
+    .clear-button {
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .clear-button svg {
+      fill: #007bff;
+      width: 20px;
+      height: 20px;
+    }
+    
+     
+     .search-results {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-top: 20px;
+    }
+
+    .search-results li {
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;  
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+     
+    .search-results li:hover {
+      background-color: #8a2be2;
+      color: white;
+    }
+
+     
+    .preview-subwindow {
+      position: fixed;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 999;
+    }
+
+    .search-results li:hover .preview-subwindow {
+      display: block;
+    }
+        
+        .search-results-container {
+        background-color: #f9f9f9;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;  
+      max-height: 300px;  
+      overflow-y: auto;  
+}
+
+
+  </style>
+</head>
+
+<body>  
+
+
+<div class="search-container">
+  <button class="search-button" id="search-button">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path
+        d="M19.71 18.29l-4.88-4.88a7.5 7.5 0 1 0-1.41 1.41l4.88 4.88a1 1 0 0 0 1.41-1.41zM10.5 16a5.5 5.5 0 1 1 5.5-5.5 5.506 5.506 0 0 1-5.5 5.5z"
+      />
+    </svg>
+  </button>
+</div>
+
+
+<template id="search-modal-template">
+  <div class="modal-container">
+          <div class="search-input-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button class="clear-button" id="clear-button">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M18.3 6.3l-1.4-1.4-5.6 5.6-5.6-5.6-1.4 1.4 5.6 5.6-5.6 5.6 1.4 1.4 5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6z" />
+          </svg>
+        </button>
+      </div>
+
+    <div class="search-results-container">
+      <ul id="search-results" class="search-results"></ul>
+    </div>
+    
+  </div>
+</template>
+
+
+
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchButton = document.getElementById("search-button");
+    let isSearchActive = false; 
+    let previewWindow; 
+
+    searchButton.addEventListener("click", function () {
+      if (!isSearchActive) {
+        openSearchModal();
+        window.addEventListener("click", outsideClickListener);
+      } else {
+        closeSearchModal();
+        window.removeEventListener("click", outsideClickListener);
+      }
+    });
+
+    function outsideClickListener(event) {
+      const searchInput = document.getElementById("search-input");
+      const searchModal = document.querySelector(".search-modal");
+    }
+
+    function openSearchModal() {
+      const modalContainer = document.importNode(
+        document.getElementById("search-modal-template").content,
+        true
+      );
+
+      document.body.appendChild(modalContainer);
+
+      const searchInput = document.getElementById("search-input");
+      const clearButton = document.getElementById("clear-button");
+      const searchResults = document.getElementById("search-results");
+      const searchResultsContainer = document.querySelector(".search-results-container");
+
+      clearButton.addEventListener("click", function () {
+        if (searchInput.value.trim() === "") {
+          closeSearchModal();
+        }
+        searchInput.value = "";
+        searchInput.focus();
+        showSearchResults([]);
+      });
+
+      searchInput.addEventListener("input", function () {
+        const query = searchInput.value.toLowerCase().trim();
+        const filteredResults = window.pagesIndex.filter((page) =>
+          page.title.toLowerCase().includes(query)
+        );
+        showSearchResults(filteredResults);
+        searchResultsContainer.classList.toggle("show-results", filteredResults.length > 0);
+      });
+
+      searchInput.focus();
+      isSearchActive = true;
+    }
+
+    function closeSearchModal() {
+      const modalContainer = document.querySelector(".modal-container");
+      if (modalContainer) {
+        modalContainer.remove();
+      }
+      isSearchActive = false;
+    }
+
+    fetch("\/index.json")
+      .then((response) => response.json())
+      .then((data) => {
+        window.pagesIndex = data;
+      })
+      .catch((error) => console.error("Error loading index.json:", error));
+
+    function showSearchResults(results) {
+      const searchResults = document.getElementById("search-results");
+      searchResults.innerHTML = "";
+
+      const uniqueSuggestions = new Set();
+
+      results.forEach((result) => {
+        if (!uniqueSuggestions.has(result.title)) {
+          const listItem = document.createElement("li");
+          listItem.textContent = result.title;
+          listItem.addEventListener("click", function () {
+            window.location.href = result.href;
+            closeSearchModal();
+          });
+
+          
+          listItem.addEventListener("mouseenter", function () {
+            showPreview(result.title, result.description);
+          });
+
+          
+          listItem.addEventListener("mouseleave", hidePreview);
+
+          searchResults.appendChild(listItem);
+          uniqueSuggestions.add(result.title);
+        }
+      });
+            searchResultsContainer.style.display = results.length > 0 ? "block" : "none";
+    }
+
+    function showPreview(title, content) {
+      if (!previewWindow) {
+        
+        previewWindow = document.createElement("div");
+        previewWindow.classList.add("preview-window");
+        document.body.appendChild(previewWindow);
+      }
+
+      
+      previewWindow.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+
+      
+      const searchInput = document.getElementById("search-input");
+      const searchInputRect = searchInput.getBoundingClientRect();
+      const previewWindowRect = previewWindow.getBoundingClientRect();
+
+      const top = searchInputRect.bottom + 10;
+      const left = searchInputRect.left + searchInputRect.width / 2 - previewWindowRect.width / 2;
+
+      previewWindow.style.top = `${top}px`;
+      previewWindow.style.left = `${left}px`;
+      previewWindow.style.display = "block";
+    }
+
+    function hidePreview() {
+      
+      if (previewWindow) {
+        previewWindow.style.display = "none";
+      }
+    }
+  });
+</script>
+
+
+
+
+</body>
+
+</html>
+
+
+      </nav>
+    
+</header>
+
+<main class="page-main pa4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">IoU Losses</h1>
+        
+        <p class="f6 measure lh-copy mv1">By Mohammad Sadil Khan in <a href="/categories/deep-learning">Deep Learning</a>  <a href="/categories/computer-vision">Computer Vision</a> </p>
+        <p class="f7 db mv0 ttu">September 27, 2020</p>
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+
+<h2 id="1-why-is-l_n-not-a-good-choice">1. Why is $l_{n}$ not a good choice?
+  <a href="#1-why-is-l_n-not-a-good-choice"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h2>
+<p>
+Bounding Box Regression is the most important task in Object Detection.
+In conventional object detection networks, a $l_{n}$ norm is used during
+training to evaluate the performance of the detector with
+the IoU (Intersection over Union) metric: $$IoU=\frac{|B_{G}\cap B_{P}|}{|B_{G} \cup B_{P}|}$$
+where $B_{g}$ and $B_{d}$ are the ground and predicted bounding boxes, respectively.
+However there is no correlation between minimizing $l_{n}$ norm and improving the
+loss associated to the IoU metric [<a href="#giou" style="color:red">1</a>], $$L_{IoU}=1-IoU(B_{g},B_{d})$$.
+</p>
+<figure>
+<center><img src="sidebar-featured.png" width="800" /> </center>
+<figcaption>Figure 1: Three cases where the $l_{2}$-norm distance between the
+representations of two rectangular bounding boxes, each given by the concatenation of the
+coordinates of
+two opposite corners, has the same value but IoU and GIoU metrics have very different values [<a href="#giou" style="color:red">1</a>]
+</figcaption>
+</figure>
+<p>
+In Figure 1, the predicted bounding box
+(black rectangle) and ground truth box (green rectangle) are
+each represented by their top-left and bottom-right corners
+(pointed by arrows), and whose the Cartesian coordinates are
+denoted as $(x_{1} , y_{1} , x_{2} , y_{2})$ and $(x_{1}' ,
+y_{1}' , x_{2}' , y_{2}')$, respectively. For simplicity,
+let us assume that the distance, e.g. $l_{2}-norm$,
+between one of the corners of two boxes is fixed. Now, if the
+second corner lies on a circle with fixed radius centered on the
+ground truth box, then the $l_{2}$ loss between the ground truth
+box and the predicted bounding box is the same although their IoU
+values can be different depending upon the positions of top-right
+and bottom-left corners. So, using IOU-loss should be the best
+option since we will then minimize the evaluating metric.
+</p>
+
+
+
+
+<h2 id="2-iou-loss-a-hrefubox-stylecolorred4a">2. IoU Loss [<a href="#ubox" style="color:red">4</a>]
+  <a href="#2-iou-loss-a-hrefubox-stylecolorred4a"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h2>
+<p>
+Generally, for two finite sample sets A and B, their IoU is defined as the intersection $(A \cap B)$
+divided by the union $(A \cup B)$ of A and B.
+</p>
+<p style="text-align: center">
+$IoU(A,B)=\frac{|A \cap B|}{|A \cup B|}=\frac{|A \cap B|}{|A|+|B|-|A \cup B|}$
+</p>
+<p>
+For bounding box-level object detection,
+the target object is usually represented by a minimum Bbox
+rectangle in the 2D image. Base on this representation, the
+IoU computation between the ground bounding box $B_{g}=(x_{1} , y_{1} , x_{2} , y_{2} )$ and
+the predicted bounding box $B_{d}=(x_{1}^{\prime} , y_{1}^{\prime} , x_{2}^{\prime} ,
+y_{2}^{\prime} )$ is defined as:-
+</p>
+<p style="text-align: center">
+$ IoU(A,B)=\frac{\text{Area of overlap between $B_{g}$ and $B_{d}$}}{\text{Area of union of $B_{g}$
+and $B_{d}$}}=$
+</p>
+<p style="text-align: center">
+$\frac{(max(x_{1},x_{1}^{\prime})-min(x_{2},x_{2}^{\prime}))\times
+(max(y_{1},y_{1}^{\prime})-min(y_{2},y_{2}^{\prime}))}{(x_{2}-x_{1})
+(y_{2}-y_{1})+(x_{2}^{\prime}-x_{1}^{\prime})
+(y_{2}^{\prime}-y_{1}^{\prime})-(max(x_{1},x_{1}^{\prime})-min(x_{2},x_{2}^{\prime}))
+(max(y_{1},y_{1}^{\prime})-min(y_{2},y_{2}^{\prime}))}$
+</p>
+<p>Usually, objects are labeled with axis-aligned BBoxes in the
+ROI dataset. By taking this kind of labels as ground truth,
+the predicted BBoxes are also axis-aligned rectangles.
+For this case, the IoU computation is very easy.</p>
+
+
+
+
+<h3 id="a-loss-function"><em>A. Loss Function</em>
+  <a href="#a-loss-function"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h3>
+<p>
+The IOU loss function[<a href="#ubox" style="color:red">4</a>] for the ground bounding box $B_{g}=(x_{1} , y_{1} , x_{2} , y_{2} )$ and
+the predicted bounding box $B_{d}=(x_{1}^{\prime} , y_{1}^{\prime} , x_{2}^{\prime} , y_{2}^{\prime}
+)$ is defined as
+</p>
+<p style="text-align: center">
+$L_{IoU}=1-IoU(B_{g},B_{d})$
+</p>
+<p>We have to prove that $L_{IoU}$ is a metric</p>
+<p>
+<ol>
+<li>
+	Since $0\leq IoU \leq 1, 0\leq L_{IoU} \leq 1$.
+	So $L_{IoU}$ is non-negative. $L_{IoU}=0 \text{ when }
+	IoU(A,B)=1 \implies$ $A$ and $B$ are the same rectangle.
+</li>
+<li>
+	$IoU(A,B)=IoU(B,A) \implies L_{IoU}(A,B)=L_{IoU}(B,A)$.
+	So $L_{IoU}$ is symmetric.
+</li>
+<li>
+	$L_{IoU}$ satisfies triangle inequality.[<a href="#teq" style="color:red">5</a>]
+</li>
+</ol>
+So $L_{IoU}$ is a metric.
+</p>
+
+
+
+
+<h3 id="b-differentiability-of-iou-loss"><em>B. Differentiability of IoU Loss</em>
+  <a href="#b-differentiability-of-iou-loss"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h3>
+<p>IOU loss is differentiable and can be backpropagated.
+Let $B_{g}=\{x_{1},y_{1},x_{2},y_{2}\}$ be the ground truth and
+$B_{d}=\{x_{1}^{\prime} , y_{1}^{\prime} , x_{2}^{\prime} , y_{2}^{\prime}\}$
+be the predicted bounding box.</p>
+<p style="text-align: left;margin-left:2em">
+$X= \text{Area of } B_{g}=(x_{2}-x_{1}) \times (y_{2}-y_{1})$
+<br>$X^{\prime}= \text{Area of } B_{d}=(x_{2}^{\prime}-
+x_{1}^{\prime})\times (y_{2}^{\prime}-y_{1}^{\prime})$
+<br>$I=(max(x_{1},x_{1}^{\prime})-min(x_{2},x_{2}^{\prime}))
+\times (max(y_{1},y_{1}^{\prime})-min(y_{2},y_{2}^{\prime}))$
+<br> $L_{IoU}=1-\frac{I}{X+X^{\prime}-I}=1-\frac{I}{U},
+\text{where } U=X+X^{\prime}-I$
+<br> $\frac{\partial L}{\partial x^{\prime}}=\frac{I(\Delta_{x^{\prime}}X-
+\Delta_{x^{\prime}}I)-U\Delta_{x^{\prime}}I}{U^{2}}$
+<br>$\frac{\partial X}{\partial x_{1}^{\prime}}=-
+(y_{2}^{\prime}-y_{1}^{\prime}), \frac{\partial X}{\partial x_{2}^
+{\prime}}=(y_{2}^{\prime}-y_{1}^{\prime}),\frac{\partial X}
+{\partial y_{2}^{\prime}}=(x_{2}^{\prime}-x_{1}^{\prime}),
+\frac{\partial X}{\partial y_{1}^{\prime}}=-(x_{2}^{\prime}-x_{1}^
+{\prime})$
+</p>
+<p style="text-align: center">
+<br> $\frac{\partial I}{\partial x_{1}^{\prime}}=
+\begin{cases}
+(max(y_{1},y_{1}^{\prime})-min(y_{2},y_{2}^{\prime})) & \text{ if } x_{1}^{\prime}>x_{1}\\
+0 & { Otherwise } \end{cases}$
+<br> $\frac{\partial I}{\partial x_{2}^{\prime}}=
+\begin{cases}
+-(max(y_{1},y_{1}^{\prime})-min(y_{2},y_{2}^{\prime})) & \text{ if } x_{2}>x_{2}^{\prime}\\
+0 & { Otherwise } \end{cases} $
+<br> $\frac{\partial I}{\partial y_{1}^{\prime}}=
+\begin{cases}
+(max(x_{1},x_{1}^{\prime})-min(x_{2},x_{2}^{\prime})) & \text{ if } y_{1}^{\prime}>y_{1}\\
+0 & { Otherwise }
+\end{cases}$
+<br> $\frac{\partial I}{\partial y_{2}^{\prime}}=
+\begin{cases}
+-(max(x_{1},x_{1}^{\prime})-min(x_{2},x_{2}^{\prime})) & \text{ if } y_{2}>y_{2}^{\prime}\\
+0 & { Otherwise }
+\end{cases}$
+</p>
+<p>
+So $L_{IoU}$ can be directly used as the objective function to
+optimize. It is therefore preferable to use IoU as the objective
+function for 2D object detection tasks. Given the choice between
+optimizing a metric itself vs.a surrogate loss function,
+the optimal choice is the metric itself.
+</p>
+
+
+
+
+<h2 id="3-giou-loss">3. GIoU Loss
+  <a href="#3-giou-loss"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h2>
+<p>However, IOU has two major issues as a metric and loss function.</p>
+<ul>
+<li>If two boxes don&rsquo;t overlap, then their IoU is zero, which doesn&rsquo;t give any indication about the proximity of the two boxes.</li>
+<li>In case of non-overlapping boxes, since their Iou is zero, the gradient is also zero. So $L_{IoU}$ can&rsquo;t be optimized.
+Generalized IoU (GIoU) addresses these weaknesses of IoU.</li>
+</ul>
+
+
+
+
+<h3 id="a-loss-function-1"><em>A. Loss Function</em>
+  <a href="#a-loss-function-1"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h3>
+<p>The Loss function for the Generalized IoU is defined as follows:-</p>
+<p style="margin-left:2em">
+Let A and B be two boxes.
+<br> Let C be the smallest enclosing box.
+<br> $IoU=\frac{|A\cap B|}{|A \cup B|}$.
+<br> $GIoU=IoU-\frac{|C\setminus (A\cup B)|}{|C|}$.
+<br> $L_{GIoU}=1-GIoU$.
+</p>
+<p> Some of the properties of GIoU[<a href="#giou" style="color:red">1</a>]:-
+</p>
+<ul>
+<li>
+<p>Similar to $L_{IoU}, L_{GIoU}$ is also non-negative, symmetric and satisfies triangle inequality. So $L_{GIoU}$ is a metric.</p>
+</li>
+<li>
+<p>GIoU is a lower bound for IoU. $\forall A,B, GIoU(A,B)\leq IoU(A,B)$ and this lower bound becomes tighter when A and B have a stronger shape
+similarity <i>i.e</i> $\lim_{A \to B} GIoU(A,B)=IoU(A,B)$.</p>
+</li>
+<li>
+<p>$0\leq IoU(A,B)\leq 1 \implies -1\leq GIoU(A,B)\leq 1$.</p>
+</li>
+<li>
+<p>$GIoU=1 \text{ when } |A\cap B|=|A\cup B|$ <i>i.e</i> when A and B completely overlaps.</p>
+</li>
+<li>
+<p>GIoU tends to -1 as the ratio between occupying
+regions $|A\cup B|$ and the smallest enclosing box
+C goes to zero, i.e $\lim_{\frac{|A\cup B|}{C} \to 0}
+GIoU(A,B)=-1 $</p>
+</li>
+<li>
+<p>$L_{GIoU}$ is differentiable.</p>
+</li>
+<li>
+<p>When IoU=0, i.e boxes don&rsquo;t overlap, $L_{GIoU}=2-\frac{|A\cup B|}{|C|}$.
+By minimizing $L_{GIoU}$, we are maximizing $\frac{|A\cup B|}{|C|}$
+($0\leq \frac{|A\cup B|}{|C|} \leq 1$) which means we are
+maximizing the region of union $|A\cup B|$ and minimizing the
+enclosing box area $|C|$, which will be possible if the
+predicted box goes to the ground truth box.</p>
+</li>
+</ul>
+
+
+
+
+<h2 id="4-diou-and-ciou-loss">4. DIoU and CIoU Loss
+  <a href="#4-diou-and-ciou-loss"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h2>
+<p>IoU loss works only for overlapping boxes and the
+problem of gradient-vaninshing in case of non-overlapping boxes
+had been solved by GIoU Loss but GIoU loss has several limitations.</p>
+<ul>
+<li>
+Generalized IoU tends to increase the size of the predicted
+bounding box to cover the target ground truth box. From Figure 2,
+we can see that when the predicted bounding box covers the
+ground truth box then $ L_{GIoU}=L_{IoU}$ (Since C=$max(A,B)\implies
+C\setminus(A\cup B)=\Phi$).
+</li>
+<li>
+$L_{GIoU}$ converges slowly.
+</li>
+</ul>
+<figure>
+<center><img src="whynotgiou.jpg" width="800" /> </center>
+<figcaption class="figure-caption text-center">Figure 2: The
+<span style="color:greenyellow">green</span>,
+<span style="color:rgb(117, 111, 111)">black</span>,
+<span style="color:cyan">blue</span>,
+<span style="color:red">red</span> represents the ground truth
+box, the anchor box, the predicted box at ith step
+when GIoU loss is used,the predicted box at ith step
+when DIoU loss is used respectively. GIoU tends to extend the box
+to cover the [<a href="#diou" style="color:red">2</a>]
+</figcaption>
+</figure>
+
+
+
+
+<h3 id="a-distance-iou-diou-loss-functiona-hrefdiou-stylecolorred2a"><em>A. Distance IoU (DIoU) Loss Function[<a href="#diou" style="color:red">2</a>]</em>
+  <a href="#a-distance-iou-diou-loss-functiona-hrefdiou-stylecolorred2a"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h3>
+<p>
+Generally IoU-based loss functions can be defined as
+</p>
+<p>$$L=1-IoU+R(B,B^{gt})$$</p>
+<p>
+where $R(B,B^{gt})$ is a penalty term and $B_{gt}$ and $B$ are the
+ground truth box and predicted box.
+</p>
+<p>
+DIoU minimizes the normalized distance between the centre point
+of the two bounding boxes. The penalty term is
+</p>
+<p>$$R_{DIoU}=\frac{\rho^{2}(b,b_{gt})}{c^{2}}$$</p>
+<p>
+where $b$ and $b_{gt}$ denote the central points of $B$ and $B_{gt}$,
+and $c$ is the diagonal length of the smallest enclosing box.
+and $\rho$ is the euclidean distance. So,
+</p>
+<p>$$L_{DIoU}=1-IoU+\frac{\rho^{2}(b,b_{gt})}{c^{2}}$$</p>
+<ul>
+<li>
+$L_{DIoU}$ is scale invariant.
+</li>
+<li>$L_{IoU}=L_{GIoU}=L_{DIoU}=0$ when two boxes are same.</li>
+</ul>
+
+
+
+
+<h3 id="b-complete-iou-ciou-loss-functiona-hrefdiou-stylecolorred2a"><em>B. Complete IoU (CIoU) Loss Function[<a href="#diou" style="color:red">2</a>]</em>
+  <a href="#b-complete-iou-ciou-loss-functiona-hrefdiou-stylecolorred2a"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h3>
+<p>
+Complete IoU is based upon DIoU loss and
+considers the aspect ratio factor.
+The loss function for Complete IoU Loss function is
+</p>
+<p>$$L_{CIoU}=L_{DIoU}+\alpha v$$</p>
+<p>where $v=\frac{4}{\pi^2}(tan^{-1}\frac{w^{gt}}{h^{gt}}
+-tan^{-1}\frac{w}{h})^2
+$ and $\alpha=\frac{v}{(1-IOU)+v}$.</p>
+
+
+
+
+<h2 id="5-code">5. Code
+  <a href="#5-code"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">os</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">math</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">torch.nn</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">nn</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">torchvision</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">calculate_iou</span>(pred,true):
+</span></span><span style="display:flex;"><span>  <span style="color:#d14">&#34;&#34;&#34;Functions to calculate IoU&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ints_x_min<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max(true[:,<span style="color:#099">0</span>],pred[:,<span style="color:#099">0</span>])
+</span></span><span style="display:flex;"><span>  ints_y_min<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max(true[:,<span style="color:#099">1</span>],pred[:,<span style="color:#099">1</span>])
+</span></span><span style="display:flex;"><span>  ints_x_max<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>min(true[:,<span style="color:#099">2</span>],pred[:,<span style="color:#099">2</span>])
+</span></span><span style="display:flex;"><span>  ints_y_max<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>min(true[:,<span style="color:#099">3</span>],pred[:,<span style="color:#099">3</span>])
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  width<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max((ints_x_max<span style="color:#000;font-weight:bold">-</span>ints_x_min),torch<span style="color:#000;font-weight:bold">.</span>tensor([<span style="color:#099">0</span>])<span style="color:#000;font-weight:bold">.</span>unsqueeze(<span style="color:#099">0</span>))
+</span></span><span style="display:flex;"><span>  height<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max((ints_y_max<span style="color:#000;font-weight:bold">-</span>ints_y_min),torch<span style="color:#000;font-weight:bold">.</span>tensor([<span style="color:#099">0</span>])<span style="color:#000;font-weight:bold">.</span>unsqueeze(<span style="color:#099">0</span>))
+</span></span><span style="display:flex;"><span>  area_intersection<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max(width<span style="color:#000;font-weight:bold">*</span>height,
+</span></span><span style="display:flex;"><span>  torch<span style="color:#000;font-weight:bold">.</span>tensor([<span style="color:#099">0</span>])<span style="color:#000;font-weight:bold">.</span>unsqueeze(<span style="color:#099">0</span>))
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#998;font-style:italic"># Find Area of the Box True</span>
+</span></span><span style="display:flex;"><span>  area_true<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mul((true[:,<span style="color:#099">2</span>]<span style="color:#000;font-weight:bold">-</span>true[:,<span style="color:#099">0</span>]),(true[:,<span style="color:#099">3</span>]<span style="color:#000;font-weight:bold">-</span>true[:,<span style="color:#099">1</span>]))
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#998;font-style:italic"># Find Area of the Box Pred</span>
+</span></span><span style="display:flex;"><span>  area_pred<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mul((pred[:,<span style="color:#099">2</span>]<span style="color:#000;font-weight:bold">-</span>pred[:,<span style="color:#099">0</span>]),(pred[:,<span style="color:#099">3</span>]<span style="color:#000;font-weight:bold">-</span>pred[:,<span style="color:#099">1</span>]))
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#998;font-style:italic"># Find Area of the Union</span>
+</span></span><span style="display:flex;"><span>  area_union<span style="color:#000;font-weight:bold">=</span>area_true<span style="color:#000;font-weight:bold">+</span>area_pred<span style="color:#000;font-weight:bold">-</span>area_intersection
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#998;font-style:italic"># Calculate IoU</span>
+</span></span><span style="display:flex;"><span>  iou<span style="color:#000;font-weight:bold">=</span>area_intersection<span style="color:#000;font-weight:bold">/</span>area_union
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> iou,area_intersection,area_union
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">IoULoss</span>(nn<span style="color:#000;font-weight:bold">.</span>Module):
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;Intersection over Union Loss&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>,losstype<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;giou&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">super</span>(IoULoss, <span style="color:#999">self</span>)<span style="color:#000;font-weight:bold">.</span>__init__()
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;&#34;&#34;losstype --&gt; str. Type of IoU based Loss. &#34;iou&#34;,&#34;giou&#34;,&#34;diou&#34;,&#34;ciou&#34;,&#34;eiou&#34; are available&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>losstype <span style="color:#000;font-weight:bold">=</span>losstype
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">forward</span>(<span style="color:#999">self</span>, pred, true):
+</span></span><span style="display:flex;"><span>    pred<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>clamp(pred,<span style="color:#0086b3">min</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)
+</span></span><span style="display:flex;"><span>    true<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>clamp(true,<span style="color:#0086b3">min</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>losstype <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#34;iou&#34;</span>:
+</span></span><span style="display:flex;"><span>    loss<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mean(<span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span>calculate_iou(pred,true)[<span style="color:#099">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>losstype <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#34;giou&#34;</span>:
+</span></span><span style="display:flex;"><span>    l_giou<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span>calculate_iou(pred,true)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>penalty_giou(pred,true)
+</span></span><span style="display:flex;"><span>    loss<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mean(l_giou)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>losstype <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#34;diou&#34;</span>:
+</span></span><span style="display:flex;"><span>    l_diou<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span>calculate_iou(pred,true)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>penalty_diou(pred,true)
+</span></span><span style="display:flex;"><span>    loss<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mean(l_diou)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>losstype <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#34;ciou&#34;</span>:
+</span></span><span style="display:flex;"><span>    l_ciou<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span>calculate_iou(pred,true)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>penalty_ciou(pred,true)
+</span></span><span style="display:flex;"><span>    loss<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mean(l_ciou)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>losstype <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#34;eiou&#34;</span>:
+</span></span><span style="display:flex;"><span>    l_eiou<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span>calculate_iou(pred,true)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>penalty_eiou(pred,true)
+</span></span><span style="display:flex;"><span>    loss<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>mean(l_eiou)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> loss
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">penalty_giou</span>(<span style="color:#999">self</span>, pred, true):
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Find Area of the Smallest Enclosing Box</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    box_x_min<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>min(true[:,<span style="color:#099">0</span>],pred[:,<span style="color:#099">0</span>])
+</span></span><span style="display:flex;"><span>    box_y_min<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>min(true[:,<span style="color:#099">1</span>],pred[:,<span style="color:#099">1</span>])
+</span></span><span style="display:flex;"><span>    box_x_max<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max(true[:,<span style="color:#099">2</span>],pred[:,<span style="color:#099">2</span>])
+</span></span><span style="display:flex;"><span>    box_y_max<span style="color:#000;font-weight:bold">=</span>torch<span style="color:#000;font-weight:bold">.</span>max(true[:,<span style="color:#099">3</span>],pred[:,<span style="color:#099">3</span>])
+</span></span><span style="display:flex;"><span>    area_c<span style="color:#000;font-weight:bold">=</span>(box_x_max<span style="color:#000;font-weight:bold">-</span>box_x_min)<span style="color:#000;font-weight:bold">*</span>(box_y_max<span style="color:#000;font-weight:bold">-</span>box_y_min)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> (area_c<span style="color:#000;font-weight:bold">-</span>calculate_iou(pred,true)[<span style="color:#099">2</span>])<span style="color:#000;font-weight:bold">/</span>area_c
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">penalty_diou</span>(<span style="color:#999">self</span>, pred, true):
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Center point of the predicted bounding box</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    center_x1 <span style="color:#000;font-weight:bold">=</span> (pred[:, <span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">+</span> pred[:, <span style="color:#099">0</span>]) <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>    center_y1 <span style="color:#000;font-weight:bold">=</span> (pred[:, <span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">+</span> pred[:, <span style="color:#099">1</span>]) <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Center Point of the ground truth box</span>
+</span></span><span style="display:flex;"><span>    center_x2 <span style="color:#000;font-weight:bold">=</span> (true[:, <span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">+</span> true[:, <span style="color:#099">0</span>]) <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>    center_y2 <span style="color:#000;font-weight:bold">=</span> (true[:, <span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">+</span> true[:, <span style="color:#099">1</span>]) <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>    inter_max_xy <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>min(pred[:, <span style="color:#099">2</span>:],true[:, <span style="color:#099">2</span>:])
+</span></span><span style="display:flex;"><span>    inter_min_xy <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>max(pred[:, :<span style="color:#099">2</span>],true[:, :<span style="color:#099">2</span>])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Bottom right corner of the enclosing box</span>
+</span></span><span style="display:flex;"><span>    out_max_xy <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>max(pred[:, <span style="color:#099">2</span>:],true[:, <span style="color:#099">2</span>:]) 
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Top left corner of the enclosing box</span>
+</span></span><span style="display:flex;"><span>    out_min_xy <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>min(pred[:, :<span style="color:#099">2</span>],true[:, :<span style="color:#099">2</span>]) 
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Distance between the center points of the ground truth and the predicted box</span>
+</span></span><span style="display:flex;"><span>    inter_diag <span style="color:#000;font-weight:bold">=</span> (center_x2 <span style="color:#000;font-weight:bold">-</span> center_x1)<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">+</span> (center_y2 <span style="color:#000;font-weight:bold">-</span> center_y1)<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>    outer <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>clamp((out_max_xy <span style="color:#000;font-weight:bold">-</span> out_min_xy), <span style="color:#0086b3">min</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)
+</span></span><span style="display:flex;"><span>    outer_diag <span style="color:#000;font-weight:bold">=</span> (outer[:, <span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span>) <span style="color:#000;font-weight:bold">+</span> (outer[:, <span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> inter_diag<span style="color:#000;font-weight:bold">/</span>outer_diag
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">penalty_ciou</span>(<span style="color:#999">self</span>, pred, true):
+</span></span><span style="display:flex;"><span>    w1 <span style="color:#000;font-weight:bold">=</span> pred[:, <span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">-</span> pred[:, <span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span>    h1 <span style="color:#000;font-weight:bold">=</span> pred[:, <span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">-</span> pred[:, <span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span>    w2 <span style="color:#000;font-weight:bold">=</span> true[:, <span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">-</span> true[:, <span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span>    h2 <span style="color:#000;font-weight:bold">=</span> true[:, <span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">-</span> true[:, <span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span>    v <span style="color:#000;font-weight:bold">=</span> (<span style="color:#099">4</span> <span style="color:#000;font-weight:bold">/</span> (math<span style="color:#000;font-weight:bold">.</span>pi <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span>)) <span style="color:#000;font-weight:bold">*</span> torch<span style="color:#000;font-weight:bold">.</span>pow((torch<span style="color:#000;font-weight:bold">.</span>atan(w2 <span style="color:#000;font-weight:bold">/</span> h2) <span style="color:#000;font-weight:bold">-</span> torch<span style="color:#000;font-weight:bold">.</span>atan(w1 <span style="color:#000;font-weight:bold">/</span> h1)), <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">with</span> torch<span style="color:#000;font-weight:bold">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    S <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> calculate_iou(pred,true)[<span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span>    alpha <span style="color:#000;font-weight:bold">=</span> v <span style="color:#000;font-weight:bold">/</span> (S <span style="color:#000;font-weight:bold">+</span> v)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>penalty_diou(pred,true)<span style="color:#000;font-weight:bold">+</span>alpha<span style="color:#000;font-weight:bold">*</span>v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">penalty_eiou</span>(<span style="color:#999">self</span>, pred, true):
+</span></span><span style="display:flex;"><span>    w1 <span style="color:#000;font-weight:bold">=</span> pred[:, <span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">-</span> pred[:, <span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span>    h1 <span style="color:#000;font-weight:bold">=</span> pred[:, <span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">-</span> pred[:, <span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span>    w2 <span style="color:#000;font-weight:bold">=</span> true[:, <span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">-</span> true[:, <span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span>    h2 <span style="color:#000;font-weight:bold">=</span> true[:, <span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">-</span> true[:, <span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Bottom right corner of the enclosing box</span>
+</span></span><span style="display:flex;"><span>    out_max_xy <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>max(pred[:, <span style="color:#099">2</span>:],true[:, <span style="color:#099">2</span>:]) 
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Top left corner of the enclosing box</span>
+</span></span><span style="display:flex;"><span>    out_min_xy <span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>min(pred[:, :<span style="color:#099">2</span>],true[:, :<span style="color:#099">2</span>]) 
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Width of the Smallest enclosing box</span>
+</span></span><span style="display:flex;"><span>    C_w<span style="color:#000;font-weight:bold">=</span>(out_max_xy[:,<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">-</span>out_min_xy[:,<span style="color:#099">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Height of the smallest enclosing box</span>
+</span></span><span style="display:flex;"><span>    C_h<span style="color:#000;font-weight:bold">=</span>(out_max_xy[:,<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">-</span>out_min_xy[:,<span style="color:#099">1</span>])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    asp<span style="color:#000;font-weight:bold">=</span> torch<span style="color:#000;font-weight:bold">.</span>clamp((w2<span style="color:#000;font-weight:bold">-</span>w1)<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>,<span style="color:#0086b3">min</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)<span style="color:#000;font-weight:bold">/</span>(C_w<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>) <span style="color:#000;font-weight:bold">+</span> torch<span style="color:#000;font-weight:bold">.</span>clamp((h2<span style="color:#000;font-weight:bold">-</span>h1)<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>,<span style="color:#0086b3">min</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)<span style="color:#000;font-weight:bold">/</span>(C_h<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>penalty_diou(pred,true)<span style="color:#000;font-weight:bold">+</span>asp
+</span></span></code></pre></div>
+
+
+
+<h2 id="6-bibliography">6. Bibliography
+  <a href="#6-bibliography"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="currentColor"></path>
+      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
+    </svg></a>
+</h2>
+<ol>
+<li>
+<p id="giou">Hamid Rezatofighi, Nathan Tsoi, JunYoung Gwak, Amir Sadeghian, Ian Reid, Silvio Savarese.</p>
+<a href="https://arxiv.org/abs/1902.09630">Generalized Intersection over Union: A Metric and A
+	Loss for Bounding Box Regression.</a>
+</li>
+<li>
+<p id="diou">Zheng Z., et al</p>
+<a href="https://arxiv.org/abs/1911.08287">Distance-IoU Loss: Faster and Better Learning for
+	Bounding Box Regression</a>
+</li>
+<li>
+<p id="eiou">Zhang Y., et al</p>
+<a href="https://arxiv.org/abs/2101.08158">Focal and Efficient IOU Loss for Accurate Bounding
+	Box Regression</a>
+</li>
+<li>
+<p id="ubox">J Yu, et al</p>
+<a href="https://arxiv.org/abs/1608.01471">UnitBox: An Advanced Object Detection Network
+</a>
+</li>
+<li>
+<p id="teq">S Kosub </p>
+<a href="https://arxiv.org/pdf/1612.02696.pdf">A note on the triangle inequality for the Jaccard
+	distance
+</a>
+</li>
+</ol>
+</section>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/blog/randlanet/">&larr; RandLaNet</a>
+  
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+                       
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/blog/iouloss/sidebar-featured.png" class="db ma0">
+
+
+<div class="blog-info ph4 pt4 pb4 pb0-l">
+  
+
+  <h1 class="f3">About Blogs</h1>
+  <p class="f6 lh-copy measure">I write blogs on different topics in Computer Vision, Deep Learning and Programming Languages.</p>
+  <p class="f7 measure lh-copy i mh0-l">Written by Mohammad Sadil Khan</p>
+
+
+  
+</div>
+
+
+  
+  <details open class="f6 fw7 input-reset">
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Posted on:</dt>
+    <dd class="fw5 ml0">September 27, 2020</dd>
+  </dl>
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Length:</dt>
+    <dd class="fw5 ml0">8 minute read, 1694 words</dd>
+  </dl>
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Categories:</dt>
+    <dd class="fw5 ml0"> <a href="/categories/deep-learning">Deep Learning</a>  <a href="/categories/computer-vision">Computer Vision</a> </dd>
+  </dl>
+  
+  
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">See Also:</dt>
+    
+    <dd class="fw5 ml0"><a href="/projects/autoannotator/">AutoAnnotator - MacOS Utility App</a></dd>
+    
+    <dd class="fw5 ml0"><a href="/blog/vc-nn/">VC Dimension and Neural Networks</a></dd>
+    
+    <dd class="fw5 ml0"><a href="/blog/vc-nn/nn/">Part 3: VC Dimension - Neural Networks</a></dd>
+    
+  </dl>
+</details>
+
+  
+
+<div class="sticky ph4 pb4">
+    <h2 class="mv0 f5 fw7 ttu tracked dib">On this page</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-why-is-l_n-not-a-good-choice">1. Why is $l_{n}$ not a good choice?</a></li>
+    <li><a href="#2-iou-loss-a-hrefubox-stylecolorred4a">2. IoU Loss [<a href="#ubox" style="color:red">4</a>]</a></li>
+    <li><a href="#3-giou-loss">3. GIoU Loss</a></li>
+    <li><a href="#4-diou-and-ciou-loss">4. DIoU and CIoU Loss</a></li>
+    <li><a href="#5-code">5. Code</a></li>
+    <li><a href="#6-bibliography">6. Bibliography</a></li>
+  </ul>
+</nav>
+</div>
+</aside>
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2023 Mohammad Sadil Khan
+      <span class="middot-divider"></span>
+      Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/SadilKhan" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.facebook.com/profile.php?id=100043829644032" title="facebook" target="_blank" rel="noopener">
+      <i class="fab fa-facebook fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.linkedin.com/in/mohammad-sadil-khan-a96568170/" title="linkedin" target="_blank" rel="noopener">
+      <i class="fab fa-linkedin fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.com/citations?user=XIDQo_IAAAAJ&amp;hl=en&amp;authuser=1" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.youtube.com/channel/UC3TCC__F3NbO2I18D7nSP6g" title="youtube" target="_blank" rel="noopener">
+      <i class="fab fa-youtube fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+    </div>
+  </nav>
+</footer>
+
+      </div>
+    </body>
+</html>

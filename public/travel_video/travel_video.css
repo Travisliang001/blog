@@ -1,0 +1,12 @@
+body {
+  background-image: url('background.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.arrow-key {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 2em;
+}

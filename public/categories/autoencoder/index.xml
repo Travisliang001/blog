@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Autoencoder on Home</title>
+    <link>/categories/autoencoder/</link>
+    <description>Recent content in Autoencoder on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/autoencoder/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PREPRINT - Vignette detection and reconstruction of composed ornaments with a strengthened autoencoder</title>
+      <link>/publications/dae/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/dae/</guid>
+      <description>Abstract A strengthened autoencoder formed by placing an object detector upstream of a decoder is here developed in the context of the model-helped human analysis of composed ornaments from a dictionary of vignettes. The detection part is in charge to detect regions of interest containing some vignette features, and the decoding part to ensure vignette reconstruction with a relative quality depending on feature match. Images of ornaments without typographical composition are generated in order to properly assess the performance of each of the two parts.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,81 @@
+/* search_style.css */
+
+/* Style the search container */
+/* search_style.css */
+
+.search-container {
+  position: absolute;
+    left: 40%;
+    top: 10%;
+    width: 800px;
+    margin-left: -200px /* half of you width */
+}
+
+#search-input-page {
+  width: 100%;
+  max-width: 800px; /* Adjust the max width as needed */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Add some styling to the search results list */
+/* Add some styling to the search results list */
+#list {
+    list-style: inside;
+    padding: 10;
+    opacity: 1; /* Initially set opacity to 0 */
+    transition: opacity 0.3s ease; /* Add a transition for smooth animation */
+}
+
+#list.show {
+    opacity: 1; /* When the list has the 'show' class, set opacity to 1 */
+}
+/* Add this to your CSS file */
+
+#list li {
+    background-color: transparent; /* Remove background color */
+    list-style-type: inside; /* Remove bullet points */
+    padding: 10px; /* Remove padding */
+    font-weight: normal; /* Adjust the font weight as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    font-family: Ariel, sans-serif;
+}
+
+#list li a {
+    text-decoration: underline;
+    color: #00308F;
+    font-weight: bold; /* Make the date text bold */
+}
+
+/* Dark mode styles */
+.dark-mode #list li a {
+    color: #7CB9E8; /* Change color for dark mode */
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.bold-date {
+    font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    top: 30%; /* Adjust this value for mobile */
+    width: 300px;
+    left: 60%;
+  }
+}
+
+

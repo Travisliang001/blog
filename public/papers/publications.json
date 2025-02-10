@@ -1,0 +1,19 @@
+{
+    "publications": [
+        {
+            "title": "Publication Title 1",
+            "collaborators": "Collaborator 1, Collaborator 2",
+            "links": [
+                {
+                    "title": "Link Title 1",
+                    "url": "https://example.com/link1"
+                },
+                {
+                    "title": "Link Title 2",
+                    "url": "https://example.com/link2"
+                }
+            ]
+        },
+        // Add more publication entries as needed
+    ]
+}

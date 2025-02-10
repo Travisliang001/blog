@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mohammad Sadil Khan on Home</title>
+    <link>/</link>
+    <description>Recent content in Mohammad Sadil Khan on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AutoAnnotator - MacOS Utility App</title>
+      <link>/projects/autoannotator/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/autoannotator/</guid>
+      <description>Automatic Image Annotator for Computer Vision</description>
+    </item>
+    
+    <item>
+      <title>Part 1: VC Dimension - Definition and Examples</title>
+      <link>/blog/vc-nn/introduction/</link>
+      <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/introduction/</guid>
+      <description>This is the first part of the VC Dimension and Neural Networks series. Basic definition and some examples of vc dimension of learning algorithms are explained here.
+1. Definition Let $S=\{x_1,x_2,\cdots,x_m\}$ be the set of m random points from $\mathbb{R}^d$ and $\mathscr{H}$ be a class of $\{-1,+1\}$ valued functions on $\mathbb{R}^d$ i.e $$\forall \\, h \in H, h:S \to \{0,1\}^m$$ One such example is $h_1(x_i)=1 \,\forall \, x_i \in S$. In the context of Machine Learning, $\mathscr{H}$ is the learning algorithm generally used for any classification task such as Logistic Regression etc.</description>
+    </item>
+    
+    <item>
+      <title>Part 1 - Point Cloud Introduction</title>
+      <link>/blog/pointcloud-series/introduction/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/introduction/</guid>
+      <description>1. What is Point Cloud? A Point Cloud is a set of points in 3D space which can represent the boundary or the whole object (including inside points). In a point cloud, the points are unordered and are not restricted by any grid which means a point cloud can be expressed in an infinite way (using translation). Each point can have 3D coordinates and feature vectors. $$ P={(X_i,F_i)}^{i=N}_{i=1}, X_i\in\mathbb{R}^3,F_i\in\mathbb{R}^d$$</description>
+    </item>
+    
+    <item>
+      <title>Part 2: VC Dimension - Theorems and Lemmas</title>
+      <link>/blog/vc-nn/theorems/</link>
+      <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/theorems/</guid>
+      <description>This is the second part of the VC Dimension and Neural Networks series. This part lists important theorems with proofs and explanations. To know the basics of VC dimension, check Part 1 - VC Dimension - Definition and Examples.
+1. Definitions $\textbf{Dichotomy}:$ A dichotomy of $S=\{x_1,x_2,\cdots,x_m\}$ induced by $h \in \mathscr{H}$ is a partition of S into two disjoint sets $S_1$ and $S_2$ such that $$h(x_i)=\begin{cases} 1 \, \text{if} \, x_i \in S_1 \\ -1 \, \text{if} \, x_i \in S_2\\ \end{cases}$$ Let $\mathscr{H}(S)$ be the set of all labelings or dichotomies that can be realized by $\mathscr{H}$.</description>
+    </item>
+    
+    <item>
+      <title>Part 2 - Point Cloud Segmentation</title>
+      <link>/blog/pointcloud-series/segmentation/</link>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/segmentation/</guid>
+      <description>Point Cloud Segmentation Methods Point Cloud Segmentation is the task for grouping objects or assigning labels to every points in the point cloud. It is one of the most challenging tasks and a research topic in deep learning since point clouds are noisy, unstructured and lack connectedness property. All the methods are categorized into four categories.
+1. Edge Based Methods Edges describe the intrinsic characteristics of the boundary of any 3D object.</description>
+    </item>
+    
+    <item>
+      <title>Part 3: VC Dimension - Neural Networks</title>
+      <link>/blog/vc-nn/nn/</link>
+      <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/nn/</guid>
+      <description>This is the third part of the VC Dimension and Neural Networks series. This part discusses the important theorems for vc dimension of MLPs. Please read Part 2: VC Dimension - Theorems and Lemmas for the important theorems that will be used here.
+1. Important Notation Abbreviation Meaning $NN$ Neural Networks $MLP$ Multilayer Perceptrons 2. Theorem 1 - Separable Regions In this theorem we will see how MLPs divides a space into different regions and classify accordingly.</description>
+    </item>
+    
+    <item>
+      <title>My Publications</title>
+      <link>/publications/</link>
+      <pubDate>Thu, 10 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/</guid>
+      <description> * Equal Contributions 🤩 Spotlight/Hightlight </description>
+    </item>
+    
+    <item>
+      <title>Mohammad Sadil Khan</title>
+      <link>/cv/</link>
+      <pubDate>Wed, 21 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/cv/</guid>
+      <description>Download Resume Work Experience PhD Student Feb 2024 - German Center of Artificial Intelligence (DFKI), RPTU Kaiserslautern, Germany Project: Vision-Language Architectures for 3D Scene and Shape Reconstruction.
+Student Researcher Jan 2023-Feb 2024 CVI2 Lab, SnT, University of Luxembourg Kirchberg, Luxembourg Project: 3D Shape Modelling using Deep Geometric and Language Models.
+The primary task was to develop novel vision-language architectures for CAD language inference from the point cloud.
+Research Intern Feb 2022-Jul 2022 Creatis, INSA Lyon Lyon, France Master Thesis Title: Learning Shapes For The Effective Segmentation of 3D Medical Images using Point Cloud.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/travel_video/</link>
+      <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/travel_video/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Swedish Crossword Puzzle App</title>
+      <link>/projects/scpa/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/scpa/</guid>
+      <description>A Crossword Puzzle App in Java</description>
+    </item>
+    
+    <item>
+      <title>RandLaNet</title>
+      <link>/blog/randlanet/</link>
+      <pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/randlanet/</guid>
+      <description>Large-Scale Point Cloud Segmentation Network</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>** Contact page don&amp;rsquo;t contain a body, just the front matter above. See form.html in the layouts folder **</description>
+    </item>
+    
+    <item>
+      <title>AutoLabelMe</title>
+      <link>/projects/autolabelme/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/autolabelme/</guid>
+      <description>Open Source Image Annotator in Python</description>
+    </item>
+    
+    <item>
+      <title>Detector-Encoder AutoEncoder</title>
+      <link>/projects/dea/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/dea/</guid>
+      <description>A Novel Autoencoder for anomaly segmentation</description>
+    </item>
+    
+    <item>
+      <title>IoU Losses</title>
+      <link>/blog/iouloss/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/iouloss/</guid>
+      <description>Loss Functions for Object Detection</description>
+    </item>
+    
+    <item>
+      <title>License</title>
+      <link>/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/license/</guid>
+      <description>My blogs are released under a Creative Commons Attribution-ShareAlike 4.0 International License.</description>
+    </item>
+    
+  </channel>
+</rss>

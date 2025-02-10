@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>keynote on Home</title>
+    <link>/categories/keynote/</link>
+    <description>Recent content in keynote on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/keynote/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network Medicine &amp; Drug Repurpusing in Times of Pandemic</title>
+      <link>/talk/inmegen/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/inmegen/</guid>
+      <description>Presentation about drug repurpusing methodologies in the context of COVID-19 at II Semana de la Biología Computacional.</description>
+    </item>
+    
+    <item>
+      <title>Drug repurposing for treating diseases: a network medicine approach</title>
+      <link>/talk/bsb2021/</link>
+      <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/bsb2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Medicine approaches for the study of Rheumatoid Arthritis</title>
+      <link>/talk/eular/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/eular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Medicine approaches for the study of SARS-CoV2 and drug repurposing</title>
+      <link>/talk/sigdrug/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/sigdrug/</guid>
+      <description>Presentation about drug repurpusing methodologies in the context of COVID-19 at SIG-Drug Design</description>
+    </item>
+    
+  </channel>
+</rss>

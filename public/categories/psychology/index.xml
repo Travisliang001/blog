@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>psychology on Home</title>
+    <link>/categories/psychology/</link>
+    <description>Recent content in psychology on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 05 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/psychology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Nosographic Structure of Posttraumatic Stress Symptoms across Different Types of Trauma: An Exploratory Network Analysis Approach</title>
+      <link>/publications/ptsd/</link>
+      <pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/ptsd/</guid>
+      <description>Abstract The nosographic structure of posttraumatic stress disorder (PTSD) remains unclear, and attempts to determine its symptomatic organization have been unsatisfactory. Several explanations have been suggested, and the impact of trauma type is receiving increasing attention. As little is known about the differential impact trauma type in the nosographic structure of PTSD, we explored the nosology of PTSD and the effect of trauma type on its symptomatic organization. We reanalyzed five cross-sectional psychopathological networks involving different trauma types, encompassing a broad range of traumatic events in veterans, war-related trauma in veterans, sexual abuse, terrorist attacks, and various traumatic events in refugees.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Vision on Home</title>
+    <link>/categories/computer-vision/</link>
+    <description>Recent content in Computer Vision on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AutoAnnotator - MacOS Utility App</title>
+      <link>/projects/autoannotator/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/autoannotator/</guid>
+      <description>Automatic Image Annotator for Computer Vision</description>
+    </item>
+    
+    <item>
+      <title>Part 1 - Point Cloud Introduction</title>
+      <link>/blog/pointcloud-series/introduction/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/introduction/</guid>
+      <description>1. What is Point Cloud? A Point Cloud is a set of points in 3D space which can represent the boundary or the whole object (including inside points). In a point cloud, the points are unordered and are not restricted by any grid which means a point cloud can be expressed in an infinite way (using translation). Each point can have 3D coordinates and feature vectors. $$ P={(X_i,F_i)}^{i=N}_{i=1}, X_i\in\mathbb{R}^3,F_i\in\mathbb{R}^d$$</description>
+    </item>
+    
+    <item>
+      <title>Part 2 - Point Cloud Segmentation</title>
+      <link>/blog/pointcloud-series/segmentation/</link>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/segmentation/</guid>
+      <description>Point Cloud Segmentation Methods Point Cloud Segmentation is the task for grouping objects or assigning labels to every points in the point cloud. It is one of the most challenging tasks and a research topic in deep learning since point clouds are noisy, unstructured and lack connectedness property. All the methods are categorized into four categories.
+1. Edge Based Methods Edges describe the intrinsic characteristics of the boundary of any 3D object.</description>
+    </item>
+    
+    <item>
+      <title>Point Cloud</title>
+      <link>/blog/pointcloud-series/</link>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/</guid>
+      <description>** No content below YAML for the series _index. This file is a leaf bundle, and provides settings for the listing page layout and sidebar content.**</description>
+    </item>
+    
+    <item>
+      <title>AutoLabelMe</title>
+      <link>/projects/autolabelme/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/autolabelme/</guid>
+      <description>Open Source Image Annotator in Python</description>
+    </item>
+    
+    <item>
+      <title>Detector-Encoder AutoEncoder</title>
+      <link>/projects/dea/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/dea/</guid>
+      <description>A Novel Autoencoder for anomaly segmentation</description>
+    </item>
+    
+    <item>
+      <title>IoU Losses</title>
+      <link>/blog/iouloss/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/iouloss/</guid>
+      <description>Loss Functions for Object Detection</description>
+    </item>
+    
+  </channel>
+</rss>

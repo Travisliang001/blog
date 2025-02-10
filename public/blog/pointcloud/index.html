@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.101.0" />
+<title>Point Cloud | Home</title>
+
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="Computer Vision | Deep Learning | Statistics | Mathematics">
+
+
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="Point Cloud | Home">
+<meta property="og:description" content="Computer Vision | Deep Learning | Statistics | Mathematics" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/blog/pointcloud/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/blog/sidebar-listing.gif" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/blog/sidebar-listing.gif" >
+    
+    
+  <meta itemprop="name" content="Point Cloud">
+<meta itemprop="description" content="Introduction to Point Cloud"><meta itemprop="datePublished" content="2022-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2474">
+<meta itemprop="keywords" content="Deep Learning,Point Cloud,Segmentation,Graph,Voxel,MLP," />
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <link rel="icon" href="" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.82c13858d84047a0267f610f871e195453d7a67612f9a7d9b4f44eeb881140b3.css" integrity="sha256-gsE4WNhAR6Amf2EPhx4ZVFPXpnYS&#43;afZtPRO64gRQLM=" media="screen">
+  
+  
+  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.0c726aeeb42ad4c5f70c2abb6be57c498447ba21d1074821f3255504c16da305.js" type="text/javascript"></script>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+</style>
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+
+</head>
+<body>
+      <div class="grid-container">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <span class="f4 fw7">Home</span>
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About me">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/blog/" title="Blogs">Blogs</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/projects/" title="Projects">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/publications/" title="Publications">Publications</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/cv/" title="CV">CV</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/contact/" title="Contact form">Contact</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+<main class="page-main pa4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 ph4-l">
+      <header class="post-header">
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">Point Cloud</h1>
+        
+        <p class="f6 measure lh-copy mv1">By Mohammad Sadil Khan</p>
+        <p class="f7 db mv0 ttu">June 28, 2022</p>
+
+      
+
+      </header>
+      <section class="post-body pt5 pb4">
+        <script src="https://mickael.canouil.fr/post/floating-toc-in-blogdown/index.en_files/header-attrs/header-attrs.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<style>
+.dark-theme a { color: white; }
+</style>
+<div id="TOC">
+<ul>
+<li><a href="#First_Point_Header">1. Introduction</a>
+				</li>
+				<li><a href="#Second_Point_Header">2. Point Cloud Generation Methods</a></li>
+				<li><a href="#Third_Point_Header">3. Point Cloud Sampling Methods</a></li>
+				<li><a href="#Fourth_Point_Header">4. Point Cloud Segmentation Networks</a>
+				<ul>
+				<li><a href="#Fourth_Point_Header_1">4.1 Edge Based Methods</a></li>
+				<li><a href="#Fourth_Point_Header_2">4.2 Region Based Methods</a></li>
+				<li><a href="#Fourth_Point_Header_3">4.3 Attribute Based Methods</a></li>
+				<li><a href="#Fourth_Point_Header_4">4.4 Deep Learning Based Methods</a></li>
+				</ul>
+				</li>
+				<li><a href="#Fifth_Point_Header">5. Point Cloud Aggregation Methods</a></li>
+</ul>
+</div>
+<div> 
+  <h1 id="First_Point_Header">1. Introduction</h1>
+  </div>
+  <p>
+  A Point Cloud is a set of points in 3D space which can represent the boundary or the whole object (including inside points). In a point cloud, the points are unordered and are not restricted by any grid which means a point cloud can be expressed in an infinite way (using translation). Each point can have 3D coordinates and feature vectors. <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}P=\{(X_i,F_i)\}^{i=N}_{i=1},&space;X_i\in\mathbb{R}^3,F_i\in\mathbb{R}^d" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}P=\{(X_i,F_i)\}^{i=N}_{i=1}, X_i\in\mathbb{R}^3,F_i\in\mathbb{R}^d" />.
+  </p>
+<p><big> <strong>Properties of Point Cloud in $\mathbb{R}^3$ </strong> </big></p>
+  <p>
+  <ul>
+    <li> <strong>Unordered:</strong> Unlike images or arrays, point cloud is unordered. It has no restriction to be confined within a boundary. This causes a problem for <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a> type architecture to learn since <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a> uses convolutional operations which requires ordered and regular array like representation of the input. Point cloud networks are generally invariant to the $N!$ number of permutations in input.</li>
+   <li> <strong>Irregularity:</strong> Points are not sampled uniformly from an image which means different objects can have dense points while others sparse [<a href="#survey" style="color:red">2</a>, <a href="#pnet" style="color:red">1</a>]. This sometimes causes class imbalance problems in point cloud dataset.</li>
+    <li> <strong>Connectedness:</strong> Since points are not connected like graph structure and neighbouring points contain meaningful spatial and geometry information of the object, networks must learn to pass information from points to points.</li>
+</ul>
+  </p>
+  <h1 id="Second_Point_Header">2. Point Cloud Generation Methods</h1>
+  <p> Point clouds are generated by 3D Scanners like time-of-flight sensors and depth cameras or photogrammetry software. Time-of-flight sensors use the reflected laser beams from sensors to the object to capture the surface of the object.</p>
+<h1 id="Third_Point_Header">3. Point Cloud Sampling Methods</h1>
+<p>
+Point Cloud Sampling is the method of choosing a subset of point clouds. Sampling methods were used in segmentation model to reduce the number of points for faster learning [<a href="#rnet" style="color:red">RandLa-Net</a>]. This is an essential step in the large-scale point cloud processing, since learning features for all the points can be time consuming. Instead, features can be learnt for small point clouds and for other points, it can be aggregated using neighboring features. There are different sampling algorithms available. Let $N$ be the number of points, $M$ is the sampled number of points chosen with $N>M$, $D$ is the maximum number of points in a 3D voxel grid ($N>>D$) and $K$ is the number of nearest neighbour($N>>K$).
+</p>
+<p> $\textbf{1. Heuristic Sampling}$ </p>
+<ul>
+    <li> <strong>Grid Sampling:</strong> In Grid Sampling, a 3D voxel grid is used over the point cloud and each occupied voxels extract one point based on averages or most frequently occurring classes. This sampling results in a uniform sample. The time complexity of the grid sampling is $O(ND)$. By averaging the points on the surface, grid sampling loses smooth boundary information.</li>
+    <li> <strong>Random Sampling:</strong> One of the simplest sampling methods, Random Sampling takes $M$ random points from a point cloud of $N$ points ($N>M$). Time complexity is $O(M)$ which makes it efficient to use in large-scale point cloud networks.</li>
+    <li> <strong> Farthest Point Sampling(FPS): </strong> It iteratively extracts set of points $P=\{p_1,p_2,\cdots,p_M \}$ such that $p_j$ is the farthest point from the first $j-1$ points in $P$. The time complexity is $O(M^2N)$ which makes it unsuitable for large scale point cloud processing.</li>
+    <li> <strong> Inverse Density Importance Sampling:</strong> In IDIS, density is calculated for every point by adding the distance between the point and its nearest neighbors. $density(x)=\sum_{y\in KNN(x)} \lVert x-y \rVert_2^2$. So $N$ points are reordered according to the inverse of the density and top $M$ points are selected which means lower density points are more likely to be chosen than high dense points. Time complexity is $O((K+N)logN)$. This sampling can control density but is sensitive to outliers and noise.</li>
+</ul>
+  <p> $\textbf{2. Learning Based Sampling}$ </p>
+<ul>
+    <li> <strong>Generator Based Sampling:</strong> Generator Based Sampling(GS) learns to generate a small subset of point clouds from the original point cloud. For a point cloud set $P$ and a task $T$, GS tries to find $S \subset P$ by minimizing the objective function $f$ such that $S^*=argmin_{S}(f(T(S))$. It is an end-to-end trainable model. But at inference stage, it uses FPS to match subsets with original point cloud. It takes up to 20 minutes to sample 10% of $10^6$ points.</li>
+    <li> <strong>Gumbel Subset Sampling:</strong> Gumbel Subset Sampling[<a href="#gss" style="color:red">4</a>] uses attention mechanism to choose a representative and task-specific subset of the point cloud. Given an input set $X_i \in \mathbb{R}^{N_i\times c}$, the task is to choose a suitable $X_{i+1} \in \mathbb{R}^{N_{i+1}\times c}, N_{i+1} \leq N_i$ and $X_{i+1}=y\cdot softmax(WX_i^T), W \in \mathbb{R}^{N_{i+1}\times N_i}$. It is completely end-to-end learnable and can be used in any segmentation network.</li>
+</ul>
+<h1 id="Fourth_Point_Header">4. Point Cloud Segmentation Methods</h1>
+<p> Point Cloud Segmentation is the task for grouping objects or assigning labels to every points in the point cloud. It is one of the most challenging tasks and a research topic in deep learning since point clouds are noisy, unstructured and lack connectedness property. All the methods are categorized into four categories.
+<h1 id="Fourth_Point_Header_1">4.1 Edge Based Methods</h1>
+Edges describe the intrinsic characteristics of the boundary of any 3D object. Edge-based methods locate the points which have rapid changes in the neighborhood. Bhanu[<a href="#survey" style="color:red">1</a>] proposed three approaches for detecting the edges of a 3D object. The first approach is calculating the gradient.
+    Let $r(i,j)$ be the range value at $(i,j)$ position, the magnitude and the direction of edge can be calculated by
+    \begin{equation}
+    \begin{split}
+         & m(i,j:0)=\frac{r(i,j-k)+r(i,j+k)-2r(i,j)}{2k}\\
+         & m(i,j;45)=\frac{r(i-k,j+k)+r(i+k,j-k)-2r(i,j)}{2k\sqrt2}\\
+         & m(i,j;90)=\frac{r(i-k,j)+r(i+k,j)-2r(i,j)}{2k}\\
+         & m(i,j;135)=\frac{r(i-k,j-k)+r(i+k,j+k)-2r(i,j)}{2k\sqrt2}
+     \end{split}
+     \end{equation}
+     For flat surfaces these values are zero, positive when edges are convex and negative when edges are concave. The maximum magnitude of gradient is $\max m(i,j;\theta)$ and the direction of edge is $argmax_{\theta}$ $m(i,j;\theta)$. Using threshold, points can be segmented.
+    The second approach is fitting 3D lines to a set of points(i.e neighboring points) and detecting the changes in the unit direction vector from a point to the neighboring points. The third approach is a surface normal approach where changes in the normal vectors in the neighborhood of a point determine the edge point. Edge models are fast and interpretable but they are very sensitive to noise and sparse density of point clouds and lack generalization capability. Learning on incomplete point cloud structure with edge-based models does not give good accuracy. In Medical image datasets especially MRI data, the organ boundaries sometimes do not have high gradient points compared to CT data which means for every modality, we have to find new thresholds in edge-based methods.
+<h1 id="Fourth_Point_Header_2">4.2 Region Based Methods</h1>
+Region-based methods use the idea of neighborhood information to group points that are similar thus finding similarly grouped 3D objects and maximizing the dissimilarity between different objects. Compared to edge-based methods, these methods are not susceptible to noise and outliers but they suffer from inaccurate border segmentation. There are two types of region-based methods.
+<ol type="A">
+<li><strong>Seeded-region Methods(bottom up):</strong> Seeded region segmentation is a fast, effective and very robust image segmentation method. It starts the segmentation process by choosing manually or automatically in preprocessing step, a set of seeds which can be a pixel or a set of pixels and then gradually adding neighbouring points if certain conditions satisfy regarding similarity[<a href="#survey" style="color:red">1</a>,<a href="#vsrg" style="color:red">5</a>]. The process finishes when every point belongs to a region. 
+        Suppose there are N seeds chosen initially. Let $A=\{A_1,A_2,\cdots,A_N\}$ be the set of seeds. Let T be the set of pixels that are not in any $A_i$ but is adjacent to at least a point in $A_i$.
+        <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}T&space;=&space;\bigg\{x\notin&space;\bigcup_{i=1}^{i=N}&space;A_i|nbr(x)&space;\cap&space;\bigcup_{i=1}^{i=N}&space;A_i&space;\neq&space;\phi&space;\bigg\}" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}T = \bigg\{x\notin \bigcup_{i=1}^{i=N} A_i|nbr(x) \cap \bigcup_{i=1}^{i=N} A_i \neq \phi \bigg\}" />
+        where $nbr(x)$ is the neighbourhood points of x. At each step if $nbr(x) \cap A_i \neq \phi$, then x is added into the region if certain conditions are met. One such condition can be checking the difference between intensity value of $x$ with the average intensity value of $A_i \forall A_i \text{ such that } nbr(x) \cap A_i \neq \phi$. The region with minimum difference is assigned to the point. There are another method when greyvalues of any point is approximated by fitting a line i.e if a coordinate of any pixel/point $p$ is $(x,y)$, then greyvalue of $p$, $G(p)=b+a_1x+a_2y+\epsilon$, where $\epsilon$ is the error term. The new homogeneity condition is to find the minimum distance between average approximated greyvalue and the approximated greyvalue of $x$.
+        Seeded-based segmentation is very much dependent upon the choice of seed points. Inaccurate choices often lead to under-segmentation or over-segmentation. </li>
+        <li> <strong> Unseeded-region Methods(top-down):</strong> Unlike seeded-based methods, unseeded methods have a top-down approach. The segmentation starts with grouping all the points into one region. Then the difference between all the mean point values and chosen point value is calculated. If it is more than the threshold then the point is kept otherwise the point is different than the rest of the points and a new region is created and the point is added into the new region and removed from the old region. The challenges are over-segmentation and domain-knowledge which is not present in complex scenes[<a href="#survey" style="color:red">1</a>].</li>
+</ol>
+<h1 id="Fourth_Point_Header_3">4.3 Attribute Based Methods</h1>
+Attribute-based methods use the idea of clustering. The approach is to calculate attributes for points and then use a clustering algorithm to perform segmentation. The challenges in these methods are how to find a suitable attribute that contains the necessary information for segmentation and to define proper distance metrics. Some of the attributes can be normal vectors, distance, point density, or surface texture measures. It is a very robust method but performs poorly if points are large-scale and attributes are multidimensional.[<a href="#survey" style="color:red">1</a>]
+<h1 id="Fourth_Point_Header_4">4.4 Deep Learning Based Methods</h1>
+The main challenge in point cloud segmentation is find good latent vector which can contain sufficient information for segmentation task. Deep Learning methods offers the best solution to learn good representations. Neural networks being a universal approximator can theoretically approximate the target function for segmentation. The following theorem justifies how <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP</a>s can approximate the function for the segmentation task given enough neurons.</p>
+<p>
+<strong>Theorem 1:</strong> Given a set of point clouds $X=\{\{x_1,x_2,\cdots,x_n\},n\in \mathbb{Z}^+,x_i \in [0,1]^m\} $, let $f:X \rightarrow R$ be a continuous function with respect to hausdorff distance($d_H(\cdot,\cdot)$).$\forall \epsilon > 0, \exists \eta,$ a continuous function and a symmetric set function $g(x_1,x_2,\cdots x_n)=\gamma \circ MAX$ such that $\forall S\subset X$.
+     <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}\bigg|f(S)-\gamma&space;\bigg(\underset{x_i&space;\in&space;S}{MAX}(\eta(x_i))&space;\bigg)&space;\bigg|<\epsilon" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}\bigg|f(S)-\gamma \bigg(\underset{x_i \in S}{MAX}(\eta(x_i)) \bigg) \bigg|<\epsilon" />
+     $\gamma$ is a continuous function and $MAX$ is an elementwise max operation which takes an input $k$ number of vectors and return a vector with element wise maximum. In practice $\gamma \text{ and } \eta$ are <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP</a> [<a href="#pnet" style="color:red">2</a>].</p>
+     <p>
+     <strong>Proof:</strong> The hausdorff distance is defined by
+     <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}d_H(x,y)=\max\bigg\{\sup\limits_{x\in&space;X}(\inf\limits_{y\in&space;Y}&space;d(x,y)),&space;\sup\limits_{y\in&space;Y}(\inf\limits_{x\in&space;X}&space;d(x,y))\bigg\}" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}d_H(x,y)=\max\bigg\{\sup\limits_{x\in X}(\inf\limits_{y\in Y} d(x,y)), \sup\limits_{y\in Y}(\inf\limits_{x\in X} d(x,y))\bigg\}" />
+     Since $f$ is a continuous function from $Y$ to $R$ w.r.t hausdorff distance, so by definition of continuity $\forall \epsilon > 0, \exists \delta_{\epsilon} > 0 $ such that if $S_1,S_2 \subset X$ and $d_H(S_1,S_2)<\delta_{\epsilon}$, then $|f(S_1)-f(S_2)|<\epsilon$.
+     Let $K=\lceil {\frac{1}{\delta_\epsilon}}\rceil, K\in \mathbb{Z}^+$. So $[0,1]$ is evenly divided into K intervals. Let $\sigma(x)$ be defined by 
+     <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}\sigma(x)&space;=\frac{\lfloor{Kx}\rfloor}{K},&space;x&space;\in&space;S" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}\sigma(x) =\frac{\lfloor{Kx}\rfloor}{K}, x \in S" />
+     So $\sigma$ maps a point to the left side of the interval it belongs to and <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}|x-\frac{\lfloor{Kx}\rfloor}{K}|=\frac{Kx-\lfloor{Kx}\rfloor}{K}<1/K\leq&space;\delta_\epsilon" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}|x-\frac{\lfloor{Kx}\rfloor}{K}|=\frac{Kx-\lfloor{Kx}\rfloor}{K}<1/K\leq \delta_\epsilon" />
+     Let $\tilde{S}={\sigma(x)},x\in S$, then <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}|f(S)&space;-&space;f(\tilde{S})|<\epsilon" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}|f(S) - f(\tilde{S})|<\epsilon" /> Since $d_H(S,\tilde{S})\leq \delta_\epsilon.$
+     Let $\eta_k(x)=e^{-d(x,[\frac{k-1}{k},\frac{k}{K}])}$ be the indicator function where $d(x,I)$ is the point to set distance <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}d(x,I)=\inf\limits_{y&space;\in&space;I}d(x,y)" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}d(x,I)=\inf\limits_{y \in I}d(x,y)" /> $d(x,I)=0$, if $x\in I$, so $\eta_k(x)=1 \text{ if } x \in [\frac{k-1}{k},\frac{k}{K}].$
+     Let $\eta(x)=[\eta_1(x);\eta_2(x);\cdots;\eta_n(x)]$. Since there are K intervals we can define K functions $v_j:\mathbb{R}^n \rightarrow \mathbb{R}, \forall j=1,\cdots,K$ such that <<img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}v_j(x_1,x_2,x_3,\cdots,x_n)=\max\{\eta_j(x_1),\cdots,\eta_j(x_n)\}" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}v_j(x_1,x_2,x_3,\cdots,x_n)=\max\{\eta_j(x_1),\cdots,\eta_j(x_n)\}" />
+     So $v_j$ denotes if any points from $S$ occupy the $jth$ interval. Let $v=[v_1;v_2,\cdots,;v_n]$. So $v:R^n\rightarrow [0,1]^K$.
+     Let $\tau:[0,1]^K \rightarrow X$ be defined by <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}\tau(v(x_1,x_2,\cdots,x_n))=\bigg\{\frac{k-1}{K}:&space;v_k&space;\geq&space;1&space;\bigg\}" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}\tau(v(x_1,x_2,\cdots,x_n))=\bigg\{\frac{k-1}{K}: v_k \geq 1 \bigg\}" />
+     So $\tau$ denotes the lower bound of any interval if it contains any point from $S$. In this respect, $\tau(v) \equiv \tilde{S}$. Let $range(\tau(v))=S_{\tau}, d_H(S_{\tau},S)<\frac{1}{K} \leq \delta_{\epsilon}$ <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}|f(\tau(v(x_1,x_2,\hdots,x_n)))-f(S)|<\epsilon" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}|f(\tau(v(x_1,x_2,\hdots,x_n)))-f(S)|<\epsilon" />
+     Let $\gamma:\mathbb{R}^K \rightarrow R$ be a continuous function such that $\gamma(v)=f(\tau(v))$.Now <img src="https://latex.codecogs.com/png.image?\LARGE&space;\dpi{110}\bg{white}\gamma(v(x_1,x_2,\cdots,x_n))=\gamma&space;(MAX)(\eta(x_1),\cdots,\eta(x_n))" title="https://latex.codecogs.com/png.image?\LARGE \dpi{110}\bg{white}\gamma(v(x_1,x_2,\cdots,x_n))=\gamma (MAX)(\eta(x_1),\cdots,\eta(x_n))" />
+     So $f$ can be approximated by a continuous($\gamma$) and a symmetric function($MAX$).In practice, $\gamma \text{ and } \eta$ can be approximated by <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP</a>.</p>
+  <p>The DL methods for point cloud segmentation can be divided into following ways.</p>
+<ol>
+<li><strong>Projection-Based Networks:</strong> Following the success of 2d <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a>s, projection-based networks use the projection of 3D point clouds into 2d images from various views/angles. Then 2D CNN techniques are applied to it to learn feature representations and finally features are aggregated with multi-view information for final output [<a href="#mvc" style="color:red">6</a>,<a href="#review1" style="color:red">7</a>]. In [<a href="#tconv" style="color:red">8</a>], tangent convolutions are used. For every point, tangent planes are calculated and tangent convolutions are based on the projection of local surface geometry on the tangent plane. This gives a tangent image which is an $l\times l$ grid where 2d convolutions can be applied. Tangent images can be computed even on a large-scale point cloud with millions of points. Compared to voxel-based models, multi-view models perform better since 2D <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a> is a well-researched area and multi-view data contain richer information than 3D voxels even after losing depth information. The main challenges in multi-view methods are the choice of projection plane and the occlusion which can affect accuracy.</li>
+<li><strong>Voxel-Based Networks:</strong>$Voxel-based methods convert the 3D point clouds into voxel-based images. Figure [<a href="#voxelization" style="color:red">1</a>] shows an example. The points which make up the point cloud are unstructured and unordered but <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a> requires a regular grid for convolution operation. 
+<figure id="voxelization">
+					<center><img src="voxelization.png" width="500" /> </center>
+					<figcaption class="figure-caption text-center">Figure 1: Voxelization of a point cloud (Image from [<a href="#pvcnn" style="color:red">9</a>])
+					</figcaption>
+				</figure>
+				<p>
+				Voxelization is done in the following steps.
+				<ul>
+				<li> A bounding box of the point cloud is calculated which defines the entire space that is to be divided.</li>
+				<li>Then the space is divided into a fixed-size grid. Each grid is called 3D cuboids.</li>
+				<li>The point cloud is divided into different grids with each 3D cuboid containing several points and these 3D cuboids become voxels that represent the subset of points.</li>
+				<li>Features are calculated from the subset of points inside a voxel.</li>
+				</ul>
+				</p>
+				Voxelization creates quantization artifacts and loses smooth boundary information. It is a computationally expensive preprocessing step and memory footprints increase cubically due to the cubical growth of voxels.  If voxel resolution is low, many points will belong to a voxel and will be represented by a single voxel so these points will not be <i> differentiable </i>. A point is <i> differentiable </i> if it exclusively occupies one voxel grid. Figure <a href="#memory" style="color:red">2</a> summarizes the memory requirements for if we want to retain higher number of differentiable points which will mean lower information loss [<a href="#pvcnn" style="color:red">9</a>]. To retain 90% of the differentiable points, GPU memory is more than 82 GB and voxel resolution is $128 \times 128 \times 128$ which is a huge computational overload.
+				<figure id="memory">
+					<center><img src="memory.png" width="500" /> </center>
+					<figcaption class="figure-caption text-center">Figure 2: Voxelization and memory footprint (Image from [<a href="#pvcnn" style="color:red">9</a>]))
+					</figcaption>
+				</figure>
+        After voxelization, 3D <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a>s can be applied for learning features for segmentation (3d UNet). In a similar approach, <i>Point-Voxel CNN</i> [<a href="#pvcnn" style="color:red">9</a>] uses <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">CNN</a> and <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP</a> bases fusion learning. It first voxelizes the point cloud and uses convolution for feature learning and then devoxelize the voxels for voxel-to-point mapping(i.e interpolation is used to create distinct features of a voxel for the points that belong to the voxel). The features of a point cloud are then aggregated with the features learned using <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP</a>. Despite its remarkable advances in segmentation tasks in the medical domain in segmentation tasks, 3D CNNs have a lot of parameters and is computationally expensive. Reducing the input size causes the loss of important information. 3DCNN also requires a large number of training samples.
+</li>
+<li>
+<strong>Point-Based Networks:</strong> Point-Based Networks work on raw point cloud data. They do not require voxelization or projection. <a href="#pnet"" style="color:red">PointNet</a> is a breakthrough network that takes input as raw point clouds and outputs labels for every point. It uses permutation-invariant operations like pointwise MLP and symmetric layer, Max-Pooling layer for feature aggregation layer. It achieves state-of-the-art performance on benchmark datasets. But <a href="#pnet"" style="color:red">PointNet</a> lacks local dependency information and so it does not capture local information. The max-pooling layer captures the global structure and loses distinct local information. Inspired by <a href="#pnet"" style="color:red">PointNet</a> many new networks are proposed to learn local structure. <a href="#pnet++"" style="color:red">PointNet++</a> extends the <a href="#pnet"" style="color:red">PointNet</a> architecture with an addition of local structure learning method. The local structure information passing idea follows the three basic steps (1) Sampling (2) Grouping (3) Feature Aggregation Layer (Section 3.3.1.E lists some Feature Aggregation functions) to aggregate the information from the points in the nearest neighbors. <i> Sampling </i> is choosing $M$ centroids from $N$ points in a point cloud ($N>M$). Random Sampling or Farthest Point Sampling are two such methods for sampling centroids. <i>Grouping</i> refers to sample representative points for a centroid using KNN. It takes the input (1) set of points $N\times(d+C)$, with $N$ is the number of points,$d$ coordinates and $C$ feature dimension and (2) set of centroids $N_1\times d$. It outputs $N_1\times K \times (d+C)$ with $K$ is the number of neighbors. These points are grouped in a local patch. The points in the local patches are used for creating local feature representation for centroid points. These local patches work like receptive fields. <i>Feature Aggregation Layer</i> takes the feature of the points in the receptive field and aggregate them to output $N_1\times(d+C)$. This process is repeated in a hierarchical way reducing the number of points as it goes deeper. This hierarchical structure enables the network to be able to learn local structures with an expanding receptive field. Most of the research in this field has gone into developing an effective feature aggregation layer to capture local structures. <a href="#pweb"" style="color:red">PointWeb</a> creates a new module <i> Adaptive Feature Adjustment</i> to enhance the neighbor features by adding the information about the impact of features on centroid features and the relation between the points. It then combines the features and uses MLP to create new representations for centroid points. Despite their initial successes the following methods achieve higher performance due to their advanced local aggregation operators.
+</li>
+</ol>
+  <h1>Bibliography</h1>
+      <ol>
+         <li>
+            <p id="survey">Anh Nguyen, Bac Le, <a href="https://ieeexplore.ieee.org/document/6758588"><i>3D Point Cloud Segmentation - A Survey</i></a>, 2013 6th IEEE Conference on Robotics, Automation and Mechatronics (RAM), 2013, pp. 225-230.</p>
+         </li>
+         <li>
+            <p id="pnet">Charles R. Qi, Hao Su, Kaichun Mo, Leonidas J. Guibas, <a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Qi_PointNet_Deep_Learning_CVPR_2017_paper.pdf"><i>PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</i></a>, 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017, pp. 77-85.</p>
+         </li>
+          <li>
+            <p id="rnet">Qingyong Hu, Bo Yang, Linhai Xie, Stefano Rosa, Yulan Guo, Zhihua Wang, A. Trigoni, A. Markham, <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Hu_RandLA-Net_Efficient_Semantic_Segmentation_of_Large-Scale_Point_Clouds_CVPR_2020_paper.pdf"><i>RandLA-Net: Efficient Semantic Segmentation of Large-Scale Point Clouds</i></a>,  2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR).</p>
+         </li>
+         <li id="gss"> <p>Jiancheng Yang, Qiang Zhang, Bingbing Ni, Linguo Li, Jinxian Liu, Mengdie Zhou, Qi Tian, <a href="https://arxiv.org/abs/1904.03375"><i>Modeling Point Clouds with Self-Attention and Gumbel Subset Sampling</i></a>, 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 3318-3327. 10.1109/CVPR.2019.00344. 
+         </li>
+         <li>
+         <p id="vsrg">M. Fan.
+<a href="https://www.researchgate.net/profile/Minjie-Fan-2/publication/269338276_Variants_of_Seeded_Region_Growing/links/5487cd460cf268d28f0728a2/Variants-of-Seeded-Region-Growing.pdf?origin=publication_detail">Variants of Seeded Region Growing</a>. Image Processing, IET · June 2015</p>
+         </li>
+         <li>
+         <p id="mvc">
+         Hang Su, Subhransu Maji ,Evangelos Kalogerakis, Erik Learned-Miller.
+<a href="https://ieeexplore.ieee.org/document/7410471">Multi-view Convolutional Neural Networks for 3D Shape Recognition<a>. 2015 IEEE International Conference on Computer Vision (ICCV), 2015, pp. 945-953
+         </p>
+         </li>
+         <li>
+         <p id="review1">Saifullahi Aminu Bello , Shangshu Yu, Cheng Wang.
+<a href="https://arxiv.org/pdf/2001.06280.pdf">Review: deep learning on 3D point clouds</a>. Remote Sensing 12, No. 11:1729.
+         </p>
+         </li>
+         <li>
+         <p id="tconv">
+         Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, Qian-Yi Zhou.
+<a href="https://arxiv.org/pdf/1807.02443.pdf">Tangent Convolutions for Dense Prediction in 3D</a>. 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+         </p>
+         </li>
+         <li>
+         <p id="pvcnn">
+         Zhijian Liu, Haotian Tang, Yujun Lin, Song Han.
+<a href="https://proceedings.neurips.cc/paper/2019/file/5737034557ef5b8c02c0e46513b98f90-Paper.pdf">Point-Voxel CNN for Efficient 3D Deep Learning</a>. Proceedings of the 33rd International Conference on Neural Information Processing Systems 2019.
+         </p>
+         </li>
+         <li>
+         <p id="pnet++">
+         Charles R. Qi, Li (Eric) Yi, Hao Su, Leonidas J. Guibas 
+<a href="https://dl.acm.org/doi/10.5555/3295222.3295263">PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</a>. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 5105–5114.
+         </p>
+         </li>
+         <li>
+         <p id="pweb">
+         H. Zhao, L. Jiang, C. -W. Fu and J. Jia
+<a href="https://ieeexplore.ieee.org/document/8954075">PointWeb: Enhancing Local Neighborhood Features for Point Cloud Processing</a>. 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2019, pp. 5560-5568, doi: 10.1109/CVPR.2019.00571.
+         </p>
+         </li>
+      </ol>
+
+        
+        <details closed class="f6 fw7 input-reset">
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Posted on:</dt>
+    <dd class="fw5 ml0">June 28, 2022</dd>
+  </dl>
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Length:</dt>
+    <dd class="fw5 ml0">12 minute read, 2474 words</dd>
+  </dl>
+  
+  
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Tags:</dt>
+    <dd class="fw5 ml0"> <a href="/tags/deep-learning">Deep Learning</a>  <a href="/tags/point-cloud">Point Cloud</a>  <a href="/tags/segmentation">Segmentation</a>  <a href="/tags/graph">Graph</a>  <a href="/tags/voxel">Voxel</a>  <a href="/tags/mlp">MLP</a> </dd>
+  </dl>
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">See Also:</dt>
+    
+    <dd class="fw5 ml0"><a href="/blog/randlanet/">RandLaNet</a></dd>
+    
+    <dd class="fw5 ml0"><a href="/blog/iouloss/">IoU Losses</a></dd>
+    
+  </dl>
+</details>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/blog/randlanet/">&larr; RandLaNet</a>
+  
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 Mohammad Sadil Khan
+      <span class="middot-divider"></span>
+      Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/SadilKhan" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.facebook.com/profile.php?id=100043829644032" title="facebook" target="_blank" rel="noopener">
+      <i class="fab fa-facebook fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.linkedin.com/in/mohammad-sadil-khan-a96568170/" title="linkedin" target="_blank" rel="noopener">
+      <i class="fab fa-linkedin fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.com/citations?user=XIDQo_IAAAAJ&amp;hl=en&amp;authuser=1" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.youtube.com/channel/UC3TCC__F3NbO2I18D7nSP6g" title="youtube" target="_blank" rel="noopener">
+      <i class="fab fa-youtube fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+    </div>
+  </nav>
+</footer>
+
+      </div>
+    </body>
+</html>

@@ -1,84 +1,80 @@
-baseURL = "https://travisliang001.github.io/blog/"
+baseURL = "/"
 theme = "hugo-apero"
 languageCode = "en"
-title = "Hugo Apéro"
-author = "Alison Hill"
+title = "Home"
+author = "Mohammad Sadil Khan"
 copyright = "" # set to override the auto generated copyright using org info and now year
-googleAnalytics = ""
-disqusShortname = "" # see params.utterances to use utterances instead of Disqus
+googleAnalytics = "G-WSFM8WQJW6"
+disqusShortname = ""
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
-# set deliberately low for testing choose your preffered number based on the blog layout you've chosen
-paginate = 5
+# set deliberately low for testing choose your prefered number based on the blog layout you've chosen
+paginate = 10
 preserveTaxonomyNames = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 enableEmoji = true
+
+
+[outputs]
+  home = ["HTML", "RSS","JSON"]
+  page = ["HTML"]
 
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark.renderer]
     unsafe = true  # Enable user to embed HTML snippets in Markdown content.
-    hardwraps = false 
+    hardwraps = false
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 2
     ordered = false
   [markup.highlight]
-    # one of: https://xyproto.github.io/splash/docs/ 
+    # one of: https://xyproto.github.io/splash/docs/
     style = "github"
-    
+
 [params]
-  orgName = "RStudio"
-  orgLocal = "Anywhere"
-  description = "A modern, beautiful, and easily configurable blog theme for Hugo."
-  favicon = "./img/favicon.ico"
-  logo = "./img/blogophonic-mark-dark.png"
-  mainSections = ["blog", "project", "talk"]
+  orgName = "Mohammad Sadil Khan"
+  orgLocal = ""
+  description = "Computer Vision | Deep Learning | Statistics | Mathematics"
+  search = true
+  search_minify = false
+  #favicon = "/img/logo_color.png"
+  #logo = "/img/logo_color.png"
+  mainSections = ["publications", "project", "blogs"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
   socialInHeader = false
   socialInFooter = true
-  # Default image for social sharing and search engines. 
+  # Default image for social sharing and search engines.
   # Place image file in `static` folder and specify image name here.
-  sharing_image = "./img/papillons.jpg"
+  #sharing_image = "/img/logo_color.png"
   # Twitter username (without @). Used when a visitor shares your site on Twitter.
-  twitter = "apreshill"
-  
+  #twitter = "GysiDeisy"
+
   # use a built-in color theme
   # one of: forest / grayscale / peach / plum /
-  #         poppy / sky / violet / water 
-  theme = "sky"
-  
+  #         poppy / sky / violet / water
+  theme = "water"
+
   # or, leave theme empty & make your own palette
   # see docs at https://hugo-apero.netlify.app/blog/color-themes/
   # the custom scss file must be in the assets/ folder
   # add the filename name here, without extension
   # to use hex colors instead of named tachyons colors, include "hex" in filename
-  custom_theme = "" 
-  
+
+  custom_theme = ""
+
   # use an embedded font-family
   # serif options: Fraunces / EB Garamond / Bitter
-  # sans-serif options: Commissioner / Atkinson Hyperlegible / Metropolis
+  # sans-serif options: Commissioner / Alegreya Sans / Metropolis
   # if you import your own fonts, name them here too
-  customtextFontFamily = "Commissioner"
-  customheadingFontFamily = "Fraunces"
+  customtextFontFamily = "Bitter"
+  customheadingFontFamily = "Bitter"
   # alternatively, leave empty and select basic font options: sans-serif or serif
   # for more http://tachyons.io/docs/typography/font-family/
-  textFontFamily = "sans-serif"
-  headingFontFamily = "sans-serif"
-
-  # Configuration of https://utteranc.es/ for comments
-  [params.utterances]
-    use_utterances = true
-    repo_name = "apreshill/apero"
-    issue_term = "pathname" # url, pathname, or title
-    theme = "boxy-light"
-    label = "comments :crystal_ball:"
-
-  # Configuration of math rendering
-  [params.math]
-    renderer = "katex" # one of "mathjax" / "katex" 
+  textFontFamily = "serif"
+  headingFontFamily = "serif"
 
   # Social icons may appear on homepage and in site header or footer
   # Configure show/hide above - add as many as you like below
@@ -88,31 +84,35 @@ enableEmoji = true
   [[params.social]]
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://github.com/apreshill/apero"
+      url       = "https://github.com/SadilKhan"
   [[params.social]]
-      icon      = "facebook-square" # icon name without the 'fa-'
+      icon      = "facebook" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.facebook.com/hashtag/ap%C3%A9ro"
+      url       = "https://www.facebook.com/profile.php?id=100043829644032"
   [[params.social]]
-      icon      = "instagram" # icon name without the 'fa-'
+      icon      = "linkedin" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.instagram.com/explore/tags/apero/"
+      url       = "https://www.linkedin.com/in/mohammad-sadil-khan-a96568170/"
   [[params.social]]
-      icon      = "twitter" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://twitter.com/hashtag/apéro"
-  [[params.social]]
-      icon      = "impactstory" # icon name without the 'fa-'
+      icon      = "google-scholar" # icon name without the 'fa-'
       icon_pack = "ai"
-      url       = "https://impactstory.org/u/0000-0002-8082-1890"
+      url       = "https://scholar.google.com/citations?user=XIDQo_IAAAAJ&hl=en&authuser=1"
   [[params.social]]
-      icon      = "orcid" # icon name without the 'fa-'
-      icon_pack = "ai"
-      url       = "http://orcid.org/0000-0002-8082-1890"
-  [[params.social]]
-      icon      = "rss" # icon name without the 'fa-'
-      icon_pack = "fas"
-      url       = "/blog/index.xml"
+      icon      = "youtube" # icon name without the 'fa-'
+      icon_pack = "fab"
+      url       = "https://www.youtube.com/channel/UC3TCC__F3NbO2I18D7nSP6g"
+  #[[params.social]]
+      #icon      = "researchgate" # icon name without the 'fa-'
+      #icon_pack = "ai"
+     # url       = "https://www.researchgate.net/profile/Deisy-Gysi"
+ #[[params.social]]
+      #icon      = "mug-hot" # icon name without the 'fa-'
+      #icon_pack = "fas"
+      #url       = "https://ko-fi.com/deisygysi"
+
+enableEmoji = true
+allowHTML = true
+
 
 [taxonomies]
   category = "categories"
@@ -120,56 +120,68 @@ enableEmoji = true
   tag = "tags"
 
 [menu]
-  # Configure header 
   [[menu.header]]
     name = "About"
-    title = "About Blogophonic"
+    title = "About me"
     url = "/about/"
     weight = 1
   [[menu.header]]
-    name = "Blog"
-    title = "Blog"
+    name = "Blogs"
+    title = "Blogs"
     url = "/blog/"
     weight = 2
+
   [[menu.header]]
     name = "Projects"
-    title = "Project Portfolio"
-    url = "/project/"
+    title = "Projects"
+    url = "/projects/"
     weight = 3
+
   [[menu.header]]
-    name = "Talks"
-    title = "Talks"
-    url = "/talk/"
+    name = "Publications"
+    title = "Publications"
+    url = "/publications/"
     weight = 4
+
   [[menu.header]]
-    name = "A collection"
-    title = "A collection"
-    url = "/collection/"
+    name = "CV"
+    title = "CV"
+    url = "/cv/"
     weight = 5
   [[menu.header]]
-    name = "Elements"
-    title = "Element Page"
-    url = "/elements/"
+    name = "Video"
+    title = "Video"
+    url = "/travel_video/"
     weight = 6
-    
-  # Configure footer  
-  [[menu.footer]]
-    name = "License"
-    title = "License"
-    url = "/license/"
-    weight = 1
-  [[menu.footer]]
+  [[menu.header]]
     name = "Contact"
     title = "Contact form"
     url = "/contact/"
-    weight = 2
-  [[menu.footer]]
-    name = "Contributors"
-    title = "Contributors"
-    url = "/contributors/"
-    weight = 3
+    weight = 7
+  [[menu.header]]
+    name = "Search"
+    title = "Search"
+    url = "/search/"
+    weight = 8
+    pre = true
+    
 
-# see https://gohugo.io/about/hugo-and-gdpr/    
+   
+
+#  [[menu.header]]
+#    name = "Blog"
+#    title = "Blog"
+#    url = "/blog/"
+#    weight = 8
+  # Configure footer
+ # [[menu.footer]]
+  #  name = "License"
+  #  title = "License"
+ #   url = "/license/"
+ #   weight = 1
+
+
+# see https://gohugo.io/about/hugo-and-gdpr/
 [privacy]
   [privacy.disqus]
     disable = false
@@ -191,14 +203,3 @@ enableEmoji = true
   [privacy.youtube]
     disable = false
     privacyEnhanced = true
-
-[security]
-  enableInlineShortcodes = false
-  [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
-    osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM)$']
-  [security.funcs]
-    getenv = ['^HUGO_', 'BLOGDOWN_POST_RELREF']
-  [security.http]
-    methods = ['(?i)GET|POST']
-    urls = ['.*']

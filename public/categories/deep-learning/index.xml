@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning on Home</title>
+    <link>/categories/deep-learning/</link>
+    <description>Recent content in Deep Learning on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 30 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Part 1: VC Dimension - Definition and Examples</title>
+      <link>/blog/vc-nn/introduction/</link>
+      <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/introduction/</guid>
+      <description>This is the first part of the VC Dimension and Neural Networks series. Basic definition and some examples of vc dimension of learning algorithms are explained here.
+1. Definition Let $S=\{x_1,x_2,\cdots,x_m\}$ be the set of m random points from $\mathbb{R}^d$ and $\mathscr{H}$ be a class of $\{-1,+1\}$ valued functions on $\mathbb{R}^d$ i.e $$\forall \\, h \in H, h:S \to \{0,1\}^m$$ One such example is $h_1(x_i)=1 \,\forall \, x_i \in S$. In the context of Machine Learning, $\mathscr{H}$ is the learning algorithm generally used for any classification task such as Logistic Regression etc.</description>
+    </item>
+    
+    <item>
+      <title>Part 1 - Point Cloud Introduction</title>
+      <link>/blog/pointcloud-series/introduction/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/introduction/</guid>
+      <description>1. What is Point Cloud? A Point Cloud is a set of points in 3D space which can represent the boundary or the whole object (including inside points). In a point cloud, the points are unordered and are not restricted by any grid which means a point cloud can be expressed in an infinite way (using translation). Each point can have 3D coordinates and feature vectors. $$ P={(X_i,F_i)}^{i=N}_{i=1}, X_i\in\mathbb{R}^3,F_i\in\mathbb{R}^d$$</description>
+    </item>
+    
+    <item>
+      <title>Part 2: VC Dimension - Theorems and Lemmas</title>
+      <link>/blog/vc-nn/theorems/</link>
+      <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/theorems/</guid>
+      <description>This is the second part of the VC Dimension and Neural Networks series. This part lists important theorems with proofs and explanations. To know the basics of VC dimension, check Part 1 - VC Dimension - Definition and Examples.
+1. Definitions $\textbf{Dichotomy}:$ A dichotomy of $S=\{x_1,x_2,\cdots,x_m\}$ induced by $h \in \mathscr{H}$ is a partition of S into two disjoint sets $S_1$ and $S_2$ such that $$h(x_i)=\begin{cases} 1 \, \text{if} \, x_i \in S_1 \\ -1 \, \text{if} \, x_i \in S_2\\ \end{cases}$$ Let $\mathscr{H}(S)$ be the set of all labelings or dichotomies that can be realized by $\mathscr{H}$.</description>
+    </item>
+    
+    <item>
+      <title>Part 2 - Point Cloud Segmentation</title>
+      <link>/blog/pointcloud-series/segmentation/</link>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/segmentation/</guid>
+      <description>Point Cloud Segmentation Methods Point Cloud Segmentation is the task for grouping objects or assigning labels to every points in the point cloud. It is one of the most challenging tasks and a research topic in deep learning since point clouds are noisy, unstructured and lack connectedness property. All the methods are categorized into four categories.
+1. Edge Based Methods Edges describe the intrinsic characteristics of the boundary of any 3D object.</description>
+    </item>
+    
+    <item>
+      <title>Part 3: VC Dimension - Neural Networks</title>
+      <link>/blog/vc-nn/nn/</link>
+      <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/nn/</guid>
+      <description>This is the third part of the VC Dimension and Neural Networks series. This part discusses the important theorems for vc dimension of MLPs. Please read Part 2: VC Dimension - Theorems and Lemmas for the important theorems that will be used here.
+1. Important Notation Abbreviation Meaning $NN$ Neural Networks $MLP$ Multilayer Perceptrons 2. Theorem 1 - Separable Regions In this theorem we will see how MLPs divides a space into different regions and classify accordingly.</description>
+    </item>
+    
+    <item>
+      <title>VC Dimension and Neural Networks</title>
+      <link>/blog/vc-nn/</link>
+      <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/</guid>
+      <description>** No content below YAML for the series _index. This file is a leaf bundle, and provides settings for the listing page layout and sidebar content.**</description>
+    </item>
+    
+    <item>
+      <title>Point Cloud</title>
+      <link>/blog/pointcloud-series/</link>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pointcloud-series/</guid>
+      <description>** No content below YAML for the series _index. This file is a leaf bundle, and provides settings for the listing page layout and sidebar content.**</description>
+    </item>
+    
+    <item>
+      <title>RandLaNet</title>
+      <link>/blog/randlanet/</link>
+      <pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/randlanet/</guid>
+      <description>Large-Scale Point Cloud Segmentation Network</description>
+    </item>
+    
+    <item>
+      <title>IoU Losses</title>
+      <link>/blog/iouloss/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/iouloss/</guid>
+      <description>Loss Functions for Object Detection</description>
+    </item>
+    
+  </channel>
+</rss>

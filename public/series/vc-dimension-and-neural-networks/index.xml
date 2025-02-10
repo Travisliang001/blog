@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VC Dimension and Neural Networks on Home</title>
+    <link>/series/vc-dimension-and-neural-networks/</link>
+    <description>Recent content in VC Dimension and Neural Networks on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 30 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="/series/vc-dimension-and-neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Part 1: VC Dimension - Definition and Examples</title>
+      <link>/blog/vc-nn/introduction/</link>
+      <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/introduction/</guid>
+      <description>This is the first part of the VC Dimension and Neural Networks series. Basic definition and some examples of vc dimension of learning algorithms are explained here.
+1. Definition Let $S=\{x_1,x_2,\cdots,x_m\}$ be the set of m random points from $\mathbb{R}^d$ and $\mathscr{H}$ be a class of $\{-1,+1\}$ valued functions on $\mathbb{R}^d$ i.e $$\forall \\, h \in H, h:S \to \{0,1\}^m$$ One such example is $h_1(x_i)=1 \,\forall \, x_i \in S$. In the context of Machine Learning, $\mathscr{H}$ is the learning algorithm generally used for any classification task such as Logistic Regression etc.</description>
+    </item>
+    
+    <item>
+      <title>Part 2: VC Dimension - Theorems and Lemmas</title>
+      <link>/blog/vc-nn/theorems/</link>
+      <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/theorems/</guid>
+      <description>This is the second part of the VC Dimension and Neural Networks series. This part lists important theorems with proofs and explanations. To know the basics of VC dimension, check Part 1 - VC Dimension - Definition and Examples.
+1. Definitions $\textbf{Dichotomy}:$ A dichotomy of $S=\{x_1,x_2,\cdots,x_m\}$ induced by $h \in \mathscr{H}$ is a partition of S into two disjoint sets $S_1$ and $S_2$ such that $$h(x_i)=\begin{cases} 1 \, \text{if} \, x_i \in S_1 \\ -1 \, \text{if} \, x_i \in S_2\\ \end{cases}$$ Let $\mathscr{H}(S)$ be the set of all labelings or dichotomies that can be realized by $\mathscr{H}$.</description>
+    </item>
+    
+    <item>
+      <title>Part 3: VC Dimension - Neural Networks</title>
+      <link>/blog/vc-nn/nn/</link>
+      <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/nn/</guid>
+      <description>This is the third part of the VC Dimension and Neural Networks series. This part discusses the important theorems for vc dimension of MLPs. Please read Part 2: VC Dimension - Theorems and Lemmas for the important theorems that will be used here.
+1. Important Notation Abbreviation Meaning $NN$ Neural Networks $MLP$ Multilayer Perceptrons 2. Theorem 1 - Separable Regions In this theorem we will see how MLPs divides a space into different regions and classify accordingly.</description>
+    </item>
+    
+    <item>
+      <title>VC Dimension and Neural Networks</title>
+      <link>/blog/vc-nn/</link>
+      <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vc-nn/</guid>
+      <description>** No content below YAML for the series _index. This file is a leaf bundle, and provides settings for the listing page layout and sidebar content.**</description>
+    </item>
+    
+  </channel>
+</rss>
