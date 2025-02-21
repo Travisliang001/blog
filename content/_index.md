@@ -1,8 +1,8 @@
 ---
-title: "Mohammad Sadil Khan"
-subtitle: "PhD in Computer Vision"
-description: "3D Computer Vision | Deep Learning | Generative AI"
-date: 2022-02-01
+title: "Jiancong Liang"
+subtitle: "Software Engineer"
+description: "MS in CS @ GaTech🐝 | Generative AI"
+date: 2025-02-20
 images:
  - img/featured.jpg
 image_left: true
