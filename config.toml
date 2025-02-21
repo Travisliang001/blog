@@ -2,7 +2,7 @@ baseURL = "/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Home"
-author = "Mohammad Sadil Khan"
+author = "Jiancong Liang"
 copyright = "" # set to override the auto generated copyright using org info and now year
 googleAnalytics = "G-WSFM8WQJW6"
 disqusShortname = ""
@@ -33,14 +33,14 @@ enableEmoji = true
     style = "github"
 
 [params]
-  orgName = "Mohammad Sadil Khan"
+  orgName = "Jiancong Liang"
   orgLocal = ""
-  description = "Computer Vision | Deep Learning | Statistics | Mathematics"
+  description = ""
   search = true
   search_minify = false
   #favicon = "/img/logo_color.png"
   #logo = "/img/logo_color.png"
-  mainSections = ["publications", "project", "blogs"]
+  mainSections = ["projects", "blogs"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
@@ -84,23 +84,19 @@ enableEmoji = true
   [[params.social]]
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://github.com/SadilKhan"
+      url       = "https://github.com/Travisliang001"
   [[params.social]]
       icon      = "facebook" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.facebook.com/profile.php?id=100043829644032"
+      url       = ""
   [[params.social]]
       icon      = "linkedin" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.linkedin.com/in/mohammad-sadil-khan-a96568170/"
-  [[params.social]]
-      icon      = "google-scholar" # icon name without the 'fa-'
-      icon_pack = "ai"
-      url       = "https://scholar.google.com/citations?user=XIDQo_IAAAAJ&hl=en&authuser=1"
+      url       = "https://www.linkedin.com/in/jcliang/"
   [[params.social]]
       icon      = "youtube" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://www.youtube.com/channel/UC3TCC__F3NbO2I18D7nSP6g"
+      url       = ""
   #[[params.social]]
       #icon      = "researchgate" # icon name without the 'fa-'
       #icon_pack = "ai"
@@ -136,34 +132,17 @@ allowHTML = true
     title = "Projects"
     url = "/projects/"
     weight = 3
-
-  [[menu.header]]
-    name = "Publications"
-    title = "Publications"
-    url = "/publications/"
-    weight = 4
-
-  [[menu.header]]
-    name = "CV"
-    title = "CV"
-    url = "/cv/"
-    weight = 5
   [[menu.header]]
     name = "Video"
     title = "Video"
     url = "/travel_video/"
-    weight = 6
-  [[menu.header]]
-    name = "Contact"
-    title = "Contact form"
-    url = "/contact/"
-    weight = 7
-  [[menu.header]]
-    name = "Search"
-    title = "Search"
-    url = "/search/"
-    weight = 8
-    pre = true
+    weight = 4
+  # [[menu.header]]
+  #   name = "Search"
+  #   title = "Search"
+  #   url = "/search/"
+  #   weight = 8
+  #   pre = true
     
 
    
